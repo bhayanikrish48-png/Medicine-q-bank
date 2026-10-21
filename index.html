@@ -6,16 +6,16 @@
 <title>Medicine Qbank</title>
 <style>
 :root{
-  --bg:#F3F5F7; --surface:#FFFFFF; --ink:#17212B; --muted:#5A6672; --line:#DCE2E8; --soft:#EAEFF3;
-  --brand:#0B5D7A; --brand-ink:#FFFFFF; --brand-soft:#DDEEF4;
+  --bg:#F3F7FC; --surface:#FFFFFF; --ink:#0F2137; --muted:#5B6B80; --line:#D8E2EF; --soft:#E8EFF8;
+  --brand:#1560D4; --brand-ink:#FFFFFF; --brand-soft:#E5EEFC;
   --ok:#157A52; --ok-bg:#E2F4EB; --bad:#B93636; --bad-bg:#FAE6E6; --warn:#9A6400; --warn-bg:#FFF2D6;
   --shadow:0 10px 40px rgba(10,25,40,.18);
-  --read:Charter,"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --read:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --ui:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 :root[data-theme=dark]{
-  --bg:#0E151B; --surface:#161F27; --ink:#E7EDF2; --muted:#95A3AF; --line:#2A3743; --soft:#1E2A34;
-  --brand:#56B6D6; --brand-ink:#08222C; --brand-soft:#16303B;
+  --bg:#0B1524; --surface:#122033; --ink:#E8EFF8; --muted:#94A7C0; --line:#25395A; --soft:#182A44;
+  --brand:#5B9DFF; --brand-ink:#07162B; --brand-soft:#16294A;
   --ok:#52C58D; --ok-bg:#12342A; --bad:#F27A80; --bad-bg:#3B1D21; --warn:#E6B04A; --warn-bg:#35280F;
   --shadow:0 10px 40px rgba(0,0,0,.6);
 }
@@ -113,7 +113,7 @@ select{width:100%;border:1px solid var(--line);background:var(--surface);color:v
 @media(min-width:980px){.qlay{grid-template-columns:minmax(0,1fr) 260px;align-items:start}}
 .qcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 20px 12px}
 .qno{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;color:var(--muted);font-size:14px;font-weight:600}
-.stem{font:400 19px/1.6 var(--read)}
+.stem{font:500 18.5px/1.6 var(--read)}
 .stem p+p{margin-top:8px}
 .stem p.x{font-size:16px;color:var(--muted);padding-left:10px;border-left:3px solid var(--line)}
 .hint{font-size:13.5px;color:var(--muted);margin:10px 0 0}
@@ -122,9 +122,9 @@ select{width:100%;border:1px solid var(--line);background:var(--surface);color:v
 .figs .fig{max-height:240px}
 .notice{margin:12px 0 0;padding:10px 12px;border-radius:10px;background:var(--warn-bg);color:var(--warn);font-size:14px}
 .opts{margin:16px 0 8px;display:flex;flex-direction:column;gap:10px}
-.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;min-height:52px;font:400 17px/1.45 var(--read)}
-.opt .k{flex:none;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font:700 14px var(--ui);margin-top:-1px}
-.opt .t{flex:1;min-width:0;padding-top:2px}
+.opt{display:flex;gap:14px;align-items:center;text-align:left;width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:14px 16px;min-height:58px;font:500 16.5px/1.45 var(--ui);box-shadow:0 1px 2px rgba(15,33,55,.06)}
+.opt .k{flex:none;width:32px;height:32px;border-radius:8px;border:1.5px solid var(--line);display:grid;place-items:center;font:700 14px var(--ui);margin-top:-1px}
+.opt .t{flex:1;min-width:0}
 .opt .t .fig{max-height:200px;margin:8px 0 2px}
 .opt:hover:not([disabled]){border-color:var(--brand)}
 .opt.sel{border-color:var(--brand);background:var(--brand-soft)}
@@ -149,14 +149,22 @@ select{width:100%;border:1px solid var(--line);background:var(--surface);color:v
 .legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;font-size:12.5px;color:var(--muted)}
 .legend span{display:flex;align-items:center;gap:6px}
 .legend i{width:12px;height:12px;border-radius:3px;border:1.5px solid var(--line);display:inline-block}
-.palbtn{display:inline-grid}
-@media(min-width:980px){.palbtn{display:none}.pal.mob{display:block}}
+.strip{display:flex;gap:6px;overflow-x:auto;padding:8px 10px;border-top:1px solid var(--line);scrollbar-width:thin}
+.strip .pn{flex:none;width:38px;height:38px}
+@media(min-width:980px){.strip{display:none}}
+.tools{display:flex;gap:6px}
+.qtool{border:1px solid var(--line);background:transparent;border-radius:8px;padding:6px 10px;min-height:38px;font-size:14px;font-weight:600;color:var(--muted)}
+.qtool.on{background:var(--warn-bg);border-color:var(--warn);color:var(--warn)}
+.clr{background:none;border:0;color:var(--brand);font-weight:600;padding:8px 0;min-height:40px}
+.palbtn{display:none}
+
 @media(max-width:979px){.pal{display:none}.pal.open{display:block;position:fixed;left:12px;right:12px;bottom:84px;top:auto;z-index:30;box-shadow:var(--shadow)}.grid{max-height:40vh}}
 .qfoot{position:fixed;left:0;right:0;bottom:0;z-index:15;background:var(--surface);border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom))}
 .qfoot .in{max-width:1080px;margin:0 auto;display:flex;gap:8px;align-items:center}
 .qfoot .sp{flex:1}
 .qfoot .btn{padding:10px 14px}
 @media(min-width:980px){.qfoot .in{padding-right:278px}}
+.qfoot .btn{min-width:110px}
 .btn.star.on{background:var(--warn-bg);border-color:var(--warn);color:var(--warn)}
 .btn.mark.on{background:var(--warn-bg);border-color:var(--warn);color:var(--warn)}
 
@@ -429,34 +437,29 @@ function renderQuiz() {
   }).join("");
   const timerTxt = s.limit ? fmtTime(s.limit - spentNow()) : fmtTime(spentNow());
   let foot;
+  const prevB = `<button class="btn" data-act="prev" ${s.i === 0 ? "disabled" : ""}>← Previous</button>`;
   if (tutor) {
-    foot = `<button class="btn" data-act="prev" ${s.i === 0 ? "disabled" : ""}>Previous</button>
-      <button class="btn star ${DB.bm[key] ? "on" : ""}" data-act="bm">${DB.bm[key] ? "★ Bookmarked" : "☆ Bookmark"}</button><span class="sp"></span>
-      ${chk ? `<button class="btn" data-act="sol">Explanation</button>` : (multi ? `<button class="btn primary" data-act="check" ${sel.length ? "" : "disabled"}>Check answer</button>` : "")}
-      ${chk ? (s.i < N - 1 ? `<button class="btn primary" data-act="next">Next</button>` : `<button class="btn primary" data-act="finish">Finish</button>`) : (s.i < N - 1 ? `<button class="btn" data-act="next">Skip</button>` : `<button class="btn" data-act="finish">Finish</button>`)}`;
+    foot = `${prevB}<span class="sp"></span>${!chk && multi ? `<button class="btn primary" data-act="check" ${sel.length ? "" : "disabled"}>Check answer</button>` : ""}
+      ${s.i < N - 1 ? `<button class="btn ${chk ? "primary" : ""}" data-act="next">Next →</button>` : `<button class="btn ${chk ? "primary" : ""}" data-act="finish">Finish</button>`}`;
   } else {
-    foot = `<button class="btn" data-act="prev" ${s.i === 0 ? "disabled" : ""}>Previous</button>
-      <button class="btn mark ${s.marked[key] ? "on" : ""}" data-act="mark">${s.marked[key] ? "⚑ Marked" : "⚐ Mark for review"}</button>
-      <button class="btn star ${DB.bm[key] ? "on" : ""}" data-act="bm" aria-label="Bookmark">${DB.bm[key] ? "★" : "☆"}</button>
-      ${sel.length ? `<button class="btn ghost" data-act="clear">Clear</button>` : ""}<span class="sp"></span>
-      ${s.i < N - 1 ? `<button class="btn primary" data-act="next">Next</button>` : `<button class="btn primary" data-act="submit">Review &amp; submit</button>`}`;
+    foot = `${prevB}<span class="sp"></span>${s.i < N - 1 ? `<button class="btn primary" data-act="next">Next →</button>` : `<button class="btn primary" data-act="submit">Review &amp; submit</button>`}`;
   }
   const verdict = tutor && chk ? `<div class="verdict-inline ${isOK(q, sel) ? "ok" : "bad"}"><span>${isOK(q, sel) ? "Correct" : "Incorrect. Correct answer: " + q.a.map(i => LETTERS[i]).join(", ")}</span><button class="btn" data-act="sol">View explanation</button></div>` : "";
   $("#app").innerHTML = `<div class="qbar"><div class="in">
     <button class="icon" data-act="exit" aria-label="Pause and exit">←</button>
     <div class="ttl"><b>${esc(CH[ch].title)}<span class="mode">${tutor ? "Tutor" : "Exam"}</span></b><span>Question ${s.i + 1} of ${N}, ${answered} answered</span></div>
     ${tutor ? `<span class="chip" id="timer">${fmtTime(spentNow())}</span>` : `<span class="chip ${s.limit && s.limit - spentNow() < 300 ? "low" : ""}" id="timer">${timerTxt}</span>`}
-    <button class="icon palbtn" data-act="pal" aria-label="Question list">▦</button>
     ${tutor ? `<button class="icon" data-act="finish" aria-label="End session">⏹</button>` : `<button class="btn primary" data-act="submit" style="margin-left:4px">Submit</button>`}</div>
-    <div class="progress"><i style="width:${100 * (s.i + 1) / N}%"></i></div></div>
+    <div class="progress"><i style="width:${100 * (s.i + 1) / N}%"></i></div><div class="strip">${pal}</div></div>
   <div class="qlay"><div>
     <div class="qcard">
-      <div class="qno"><span>Q${s.i + 1}</span></div>
+      <div class="qno"><span>Q${s.i + 1}</span><div class="tools">${tutor ? "" : `<button class="qtool ${s.marked[key] ? "on" : ""}" data-act="mark">${s.marked[key] ? "⚑ Marked" : "⚐ Mark"}</button>`}<button class="qtool ${DB.bm[key] ? "on" : ""}" data-act="bm">${DB.bm[key] ? "★ Saved" : "☆ Save"}</button></div></div>
       <div class="stem">${stemHTML(q)}</div>
       ${(q.qi || []).length ? `<div class="figs">${q.qi.map(imgTag).join("")}</div>` : ""}
       ${q.m ? `<div class="notice">The image for this question is missing from the source PDF, so some options may appear blank. The explanation still shows the answer.</div>` : ""}
       ${multi ? `<p class="hint">More than one option is correct. Select all that apply.</p>` : ""}
       <div class="opts">${q.o.map((_, i) => optHTML(q, key, i)).join("")}</div>
+      ${!tutor && sel.length ? `<button class="clr" data-act="clear">Clear my answer</button>` : ""}
       ${verdict}
     </div></div>
     <aside class="pal ${state.palOpen ? "open" : ""}"><h3>Questions</h3><div class="grid">${pal}</div>
@@ -465,6 +468,7 @@ function renderQuiz() {
   <div class="qfoot"><div class="in">${foot}</div></div>`;
   clearInterval(timerId);
   timerId = setInterval(tick, 1000);
+  const stp = $(".strip"), cp = stp && stp.querySelector(".cur"); if (stp && cp) stp.scrollLeft = cp.offsetLeft - stp.clientWidth / 2 + 19;
   window.scrollTo(0, 0);
 }
 function tick() {
