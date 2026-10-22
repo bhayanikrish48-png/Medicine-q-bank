@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#00804A">
-<title>step the ladder 🪜</title>
+<title>step the ladder </title>
 <style>
 :root{
   --bg:#F7F8F9; --surface:#FFFFFF; --ink:#111B2E; --muted:#5E6A83; --line:#E2E7F5; --soft:#EEF1FB;
@@ -308,7 +308,7 @@ details.rv>summary::-webkit-details-marker{display:none}
 .lrow small{display:block;color:var(--muted)}
 .btn.danger{color:var(--bad);border-color:var(--bad)}
 
-/* ---------- MedXI additions ---------- */
+/* ---------- step the ladder additions ---------- */
 :root[data-accent=blue]{--brand:#1976D2}
 :root[data-accent=peach]{--brand:#FF5722}
 :root[data-accent=pink]{--brand:#E91E63}
@@ -582,7 +582,7 @@ const emptyBox = (icon, title, text) => `<div class="empty"><i>${ico(icon, 30)}<
 /* ===================== main screens ===================== */
 function bnav() {
   const cur = ["saved", "prev", "cont"].includes(state.nav) ? "qbank" : state.nav;
-  const items = [["home", "Home", "home"], ["videos", "Videos", "video"], ["notes", "Notes", "doc"], ["qbank", "QBank", "quiz"], ["profile", "Profile", "user"]];
+  const items = [["home", "Home", "home"], ["notes", "Notes", "doc"], ["qbank", "QBank", "quiz"], ["profile", "Profile", "user"]];
   return `<nav class="bnav" aria-label="Main"><div class="in">${items.map(([k, l, i]) => `<button class="${cur === k ? "on" : ""}" data-act="nav" data-nav="${k}" ${cur === k ? 'aria-current="page"' : ""}><i>${ico(i, 22)}</i>${l}</button>`).join("")}</div></nav>`;
 }
 function renderMain() {
@@ -630,7 +630,7 @@ function askConfirm(title, text, okLabel, fn) {
     <div class="sh-foot"><button class="btn" data-act="closeov">Cancel</button><button class="btn primary" data-act="cfm-ok">${esc(okLabel)}</button></div></div></div>`;
 }
 function closeLayer() { $("#layer").innerHTML = ""; }
-/* ===================== MedXI: theme, mode, quotes ===================== */
+/* ===================== step the ladder: theme, mode, quotes ===================== */
 const ACCENTS = [
   { id: "blue", label: "Default", name: "Blue", hex: "#1976D2" },
   { id: "peach", label: "Peach", name: "Orange", hex: "#FF5722" },
