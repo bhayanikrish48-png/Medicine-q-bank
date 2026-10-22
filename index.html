@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#00804A">
-<title>step the ladder </title>
+<title>step the ladder 🪜</title>
 <style>
 :root{
   --bg:#F7F8F9; --surface:#FFFFFF; --ink:#111B2E; --muted:#5E6A83; --line:#E2E7F5; --soft:#EEF1FB;
@@ -308,7 +308,7 @@ details.rv>summary::-webkit-details-marker{display:none}
 .lrow small{display:block;color:var(--muted)}
 .btn.danger{color:var(--bad);border-color:var(--bad)}
 
-/* ---------- step the ladder additions ---------- */
+/* ---------- MedXI additions ---------- */
 :root[data-accent=blue]{--brand:#1976D2}
 :root[data-accent=peach]{--brand:#FF5722}
 :root[data-accent=pink]{--brand:#E91E63}
@@ -582,7 +582,7 @@ const emptyBox = (icon, title, text) => `<div class="empty"><i>${ico(icon, 30)}<
 /* ===================== main screens ===================== */
 function bnav() {
   const cur = ["saved", "prev", "cont"].includes(state.nav) ? "qbank" : state.nav;
-  const items = [["home", "Home", "home"], ["notes", "Notes", "doc"], ["qbank", "QBank", "quiz"], ["profile", "Profile", "user"]];
+  const items = [["home", "Home", "home"], ["videos", "Videos", "video"], ["notes", "Notes", "doc"], ["qbank", "QBank", "quiz"], ["profile", "Profile", "user"]];
   return `<nav class="bnav" aria-label="Main"><div class="in">${items.map(([k, l, i]) => `<button class="${cur === k ? "on" : ""}" data-act="nav" data-nav="${k}" ${cur === k ? 'aria-current="page"' : ""}><i>${ico(i, 22)}</i>${l}</button>`).join("")}</div></nav>`;
 }
 function renderMain() {
@@ -630,7 +630,7 @@ function askConfirm(title, text, okLabel, fn) {
     <div class="sh-foot"><button class="btn" data-act="closeov">Cancel</button><button class="btn primary" data-act="cfm-ok">${esc(okLabel)}</button></div></div></div>`;
 }
 function closeLayer() { $("#layer").innerHTML = ""; }
-/* ===================== step the ladder: theme, mode, quotes ===================== */
+/* ===================== MedXI: theme, mode, quotes ===================== */
 const ACCENTS = [
   { id: "blue", label: "Default", name: "Blue", hex: "#1976D2" },
   { id: "peach", label: "Peach", name: "Orange", hex: "#FF5722" },
@@ -952,7 +952,8 @@ function renderQuiz() {
   else foot = `${prevB}<span class="sp"></span>${!chk && mode === "review" ? `<button class="btn" data-act="reveal">Reveal answer</button>` : ""}${!chk && multi && sel.length ? `<button class="btn primary" data-act="check">Check answer</button>` : ""}
       ${last ? `<button class="btn ${chk ? "primary" : ""}" data-act="finish">Finish</button>` : `<button class="btn ${chk ? "primary" : ""}" data-act="next">Next →</button>`}`;
   const ok = isOK(q, sel);
-  const verdict = mode !== "exam" && chk ? `<div class="verdict-inline ${sel.length ? (ok ? "ok" : "bad") : ""}" style="${sel.length ? "" : "background:var(--soft);color:var(--ink)"}"><span>${sel.length ? (ok ? "Correct" : "Incorrect. Correct answer: " + q.a.map(i => LETTERS[i]).join(", ")) : "Answer: " + q.a.map(i => LETTERS[i]).join(", ")}</span><button class="btn" data-act="sol">View explanation</button></div>` : "";
+  const verdict = mode !== "exam" && chk ? `<div class="verdict-inline ${sel.length ? (ok ? "ok" : "bad") : ""}" style="${sel.length ? "" : "background:var(--soft);color:var(--ink)"}"><span>${sel.length ? (ok ? "Correct" : "Incorrect. Correct answer: " + q.a.map(i => LETTERS[i]).join(", ")) : "Answer: " + q.a.map(i => LETTERS[i]).join(", ")}</span></div>` : "";
+  const solutionInline = mode !== "exam" && chk ? `<section id="inline-solution" class="card" style="margin-top:14px"><h3 class="ct" style="margin-bottom:12px">Explanation</h3><div class="verdict ${!sel.length ? "" : ok ? "ok" : "bad"}" ${!sel.length ? 'style="background:var(--soft)"' : ""}><span class="big">${!sel.length ? "i" : ok ? "✓" : "✗"}</span><div>${!sel.length ? "Answer revealed" : ok ? "Correct" : "Incorrect"}<small>Correct answer: ${q.a.map(i => LETTERS[i]).join(", ")}${sel.length && !ok ? " (you chose " + sel.map(i => LETTERS[i]).join(", ") + ")" : ""}</small></div></div><div class="recap">${q.o.map((o, i) => `<div class="rc ${q.a.includes(i) ? "ok" : sel.includes(i) ? "bad" : ""}"><b>${LETTERS[i]}</b><span>${esc(o.t) || "(image option)"}</span></div>`).join("")}</div><div class="sol">${q.s.length ? blocksHTML(q.s) : "<p>No explanation was included for this question.</p>"}</div></section>` : "";
   const qrem = s.qt ? (s.qrem[key] === undefined ? s.qt : s.qrem[key]) : null;
   const single = s.cfg && s.cfg.ids.length === 1 ? s.cfg.ids[0] : null;
   $("#app").innerHTML = `<div class="qbar"><div class="in">
@@ -974,6 +975,7 @@ function renderQuiz() {
       <div class="opts">${q.o.map((_, i) => optHTML(q, key, i)).join("")}</div>
       ${mode === "exam" && sel.length && !expired(s, key) ? `<button class="clr" data-act="clear">Clear my answer</button>` : ""}
       ${verdict}
+      ${solutionInline}
     </div></div>
     <aside class="pal"><h3>Questions</h3><div class="grid">${pal}</div>
       <div class="legend">${mode === "exam" ? `<span><i style="background:var(--brand);border-color:var(--brand)"></i>Answered</span><span><i style="background:#E0A100;border-color:#E0A100;border-radius:50%"></i>Marked</span>` : `<span><i style="background:var(--ok);border-color:var(--ok)"></i>Correct</span><span><i style="background:var(--bad);border-color:var(--bad)"></i>Wrong</span>`}<span><i></i>Not answered</span></div></aside>
@@ -1000,7 +1002,7 @@ function onExpire() {
   if (s.mode === "tutor") {
     if (s.checked[key]) return;
     s.checked[key] = true; const a = s.ans[key]; if (a && a.length) { const o = isOK(q, a); record(key, o); streakTrack(key, o); }
-    saveSess(); renderQuiz(); toast("Time is up. Here is the answer."); openSolution();
+    saveSess(); renderQuiz(); toast("Time is up. Here is the answer.");
   } else { toast("Time is up for this question."); if (s.i < s.list.length - 1) s.i++; saveSess(); renderQuiz(); }
 }
 function record(key, ok) { const o = DB.st[key] || { a: 0 }; DB.st[key] = { c: ok ? 1 : 0, a: (o.a || 0) + 1, t: Date.now() }; saveDB(); }
@@ -1017,9 +1019,9 @@ function selectOpt(i) {
 function checkAnswer() {
   const { q, key } = curQ(), s = SESS;
   if (!(s.ans[key] || []).length) return;
-  const okA = isOK(q, s.ans[key]); s.checked[key] = true; record(key, okA); streakTrack(key, okA); saveSess(); renderQuiz(); openSolution();
+  const okA = isOK(q, s.ans[key]); s.checked[key] = true; record(key, okA); streakTrack(key, okA); saveSess(); renderQuiz();
 }
-function revealAnswer() { const { key } = curQ(); SESS.checked[key] = true; saveSess(); renderQuiz(); openSolution(); }
+function revealAnswer() { const { key } = curQ(); SESS.checked[key] = true; saveSess(); renderQuiz(); }
 
 /* ===================== SOLUTION POPUP ===================== */
 function blocksHTML(bl) {
@@ -1167,7 +1169,7 @@ document.addEventListener("click", async e => {
     case "pick": selectOpt(+el.dataset.i); break;
     case "check": checkAnswer(); break;
     case "reveal": revealAnswer(); break;
-    case "sol": openSolution(); break;
+    case "sol": { const el = $("#inline-solution"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); break; }
     case "next": if (SESS.i < SESS.list.length - 1) { SESS.i++; saveSess(); renderQuiz(); } break;
     case "next-close": closeLayer(); if (SESS.i < SESS.list.length - 1) { SESS.i++; saveSess(); renderQuiz(); } break;
     case "prev": if (SESS.i > 0) { SESS.i--; saveSess(); renderQuiz(); } break;
@@ -1206,7 +1208,7 @@ document.addEventListener("keydown", e => {
   else if (num >= 1 && num <= q.o.length) selectOpt(num - 1);
   else if (e.key === "ArrowRight") { const b = $("[data-act=next]"); b && b.click(); }
   else if (e.key === "ArrowLeft") { const b = $("[data-act=prev]"); b && b.click(); }
-  else if (e.key === "Enter") { if (SESS.mode !== "exam" && SESS.checked[key]) openSolution(); else { const b = $("[data-act=check]"); b && b.click(); } }
+  else if (e.key === "Enter") { if (SESS.mode !== "exam" && SESS.checked[key]) { const el = $("#inline-solution"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); } else { const b = $("[data-act=check]"); b && b.click(); } }
 });
 document.addEventListener("change", e => {
   const t = e.target;
