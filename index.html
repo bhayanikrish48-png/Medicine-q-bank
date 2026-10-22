@@ -316,6 +316,7 @@ details.rv>summary::-webkit-details-marker{display:none}
 .icon{color:var(--ink)}
 .brand{display:flex;align-items:center;gap:12px}
 .brand h1{font:800 24px/1.1 var(--ui);letter-spacing:-.02em}
+.ladder-logo{flex:none;display:grid;place-items:center;width:40px;height:40px;font-size:32px;line-height:1}
 .brand p{margin:0!important}
 .welcome{font:800 22px/1.25 var(--ui);margin-top:14px}
 .quote{margin:14px 0;border:1.5px solid color-mix(in srgb,var(--brand) 35%,var(--line));background:var(--brand-soft);border-radius:20px;padding:14px 16px 18px}
@@ -705,7 +706,7 @@ function refreshQuote() {
 }
 
 /* ===================== MedXI: header, home, profile ===================== */
-const LOGO = `<svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="var(--brand)"/><path d="M17 8h6v9h9v6h-9v9h-6v-9H8v-6h9z" fill="#fff"/></svg>`;
+const LOGO = `<span class="ladder-logo" aria-hidden="true">🪜</span>`;
 const modeBtn = () => `<button class="icon" data-act="togglemode" aria-label="Switch to ${isDark() ? "light" : "dark"} mode">${ico(isDark() ? "sun" : "moon", 22)}</button>`;
 const hdr = (t, p) => `<div class="hdr"><div><h1>${t}</h1><p>${p}</p></div>${modeBtn()}</div>`;
 function weakest() {
@@ -718,7 +719,7 @@ function homeHTML() {
   const t = IDX.reduce((a, c) => { const s = chStats(c.id); a.att += s.att; a.cor += s.cor; return a; }, { att: 0, cor: 0 });
   const allIds = IDX.map(c => c.id), wrong = countFilter(allIds).wrong, bm = Object.values(DB.bm).filter(Boolean).length;
   const un = unfinished(), u = un[0], nSaved = Object.keys(DB.saved).filter(id => CH[id]).length;
-  let h = `<div class="hdr"><div class="brand">${LOGO}<div><h1>MedXI</h1><p>Medical exam practice</p></div></div>${modeBtn()}</div>
+  let h = `<div class="hdr"><div class="brand">${LOGO}<div><h1>Step the Ladder</h1><p>Medical exam practice</p></div></div>${modeBtn()}</div>
     <h2 class="welcome">${DB.name ? "Welcome back, " + esc(DB.name) : "Welcome back"}</h2>
     <p class="sub">${total.toLocaleString()} questions in ${IDX.length} chapters</p>
     <div class="quote" aria-label="Medical quote of the day"><div class="qh"><span>Quote of the day</span><button class="icon" data-act="quote" aria-label="Show another quote">${ico("refresh", 18)}</button></div>
@@ -767,7 +768,7 @@ function profileHTML() {
     <input type="file" id="impfile" accept="application/json,.json" hidden>
     <div class="danger-zone"><h3>Danger zone</h3><p>Reset All Progress deletes your answers, bookmarks, saved tests, unfinished tests and all previous attempts on this device. Your videos, notes, name and theme are kept. It can't be undone.</p>
       <button class="btn danger" data-act="reset">Reset all progress</button></div>
-    <p class="foot">MedXI keeps everything in this browser. Clearing site data removes it, so export a backup now and then.</p>`;
+    <p class="foot">Step the Ladder keeps everything in this browser. Clearing site data removes it, so export a backup now and then.</p>`;
 }
 
 /* ===================== MedXI: videos & notes (your own, stored on this device) ===================== */
