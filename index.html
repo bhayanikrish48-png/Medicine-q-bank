@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#2563EB">
-<title>Medicine Qbank</title>
+<meta name="theme-color" content="#00804A">
+<title>MedXI</title>
 <style>
 :root{
-  --bg:#F6F7FF; --surface:#FFFFFF; --ink:#111B2E; --muted:#5E6A83; --line:#E2E7F5; --soft:#EEF1FB;
-  --brand:#2563EB; --brand-ink:#FFFFFF; --brand-soft:#E8EFFF;
+  --bg:#F7F8F9; --surface:#FFFFFF; --ink:#111B2E; --muted:#5E6A83; --line:#E2E7F5; --soft:#EEF1FB;
+  --brand:#00804A; --brand-ink:#FFFFFF; --brand-soft:color-mix(in srgb,var(--brand) 12%,var(--surface)); --brand-text:color-mix(in srgb,var(--brand) 82%,#000);
   --ok:#157A52; --ok-bg:#E2F4EB; --bad:#B93636; --bad-bg:#FAE6E6; --warn:#9A6400; --warn-bg:#FFF2D6;
-  --sh-sm:0 2px 10px rgba(37,99,235,.07); --shadow:0 10px 40px rgba(10,25,60,.22);
+  --sh-sm:0 2px 10px rgba(15,30,50,.07); --shadow:0 10px 40px rgba(10,25,60,.22);
   --read:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --ui:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 :root[data-theme=dark]{
   --bg:#0B1220; --surface:#131C30; --ink:#E8EEFA; --muted:#97A6C3; --line:#24324F; --soft:#1A2640;
-  --brand:#5B9DFF; --brand-ink:#07162B; --brand-soft:#17284A;
+  --brand-ink:#FFFFFF; --brand-soft:color-mix(in srgb,var(--brand) 20%,var(--surface)); --brand-text:color-mix(in srgb,var(--brand) 60%,#fff);
   --ok:#52C58D; --ok-bg:#12342A; --bad:#F27A80; --bad-bg:#3B1D21; --warn:#E6B04A; --warn-bg:#35280F;
   --sh-sm:0 2px 10px rgba(0,0,0,.3); --shadow:0 10px 40px rgba(0,0,0,.6);
 }
@@ -126,7 +126,7 @@ select{width:100%;border:1px solid var(--line);background:var(--surface);color:v
 .tools{display:flex;gap:6px}
 .qtool{border:1px solid var(--line);background:transparent;border-radius:8px;padding:6px 10px;min-height:38px;font-size:14px;font-weight:600;color:var(--muted)}
 .qtool.on{background:var(--warn-bg);border-color:var(--warn);color:var(--warn)}
-.clr{background:none;border:0;color:var(--brand);font-weight:600;padding:8px 0;min-height:40px}
+.clr{background:none;border:0;color:var(--brand-text);font-weight:600;padding:8px 0;min-height:40px}
 .palbtn{display:none}
 
 @media(max-width:979px){.pal{display:none}.pal.open{display:block;position:fixed;left:12px;right:12px;bottom:84px;top:auto;z-index:30;box-shadow:var(--shadow)}.grid{max-height:40vh}}
@@ -199,11 +199,11 @@ details.rv>summary::-webkit-details-marker{display:none}
 .sec{font:700 17px/1.3 var(--ui);margin:22px 0 10px}
 .sub{color:var(--muted);font-size:14px;margin-top:2px}
 .ph{font:800 24px/1.2 var(--ui);letter-spacing:-.01em;margin-top:16px}
-.bnav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);display:flex;justify-content:center;padding:6px 4px calc(6px + env(safe-area-inset-bottom));box-shadow:0 -4px 18px rgba(37,99,235,.06)}
+.bnav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);display:flex;justify-content:center;padding:6px 4px calc(6px + env(safe-area-inset-bottom));box-shadow:0 -4px 18px rgba(15,30,50,.06)}
 .bnav .in{display:flex;width:100%;max-width:760px}
 .bnav button{flex:1;background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 2px;min-height:54px;color:var(--muted);font-size:11.5px;font-weight:600}
 .bnav button i{display:grid;place-items:center;width:52px;height:30px;border-radius:15px;font-style:normal}
-.bnav button.on{color:var(--brand)}
+.bnav button.on{color:var(--brand-text)}
 .bnav button.on i{background:var(--brand-soft)}
 
 /* ---------- tabs / chips ---------- */
@@ -215,16 +215,16 @@ details.rv>summary::-webkit-details-marker{display:none}
 .chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 6px;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
 .chp{flex:none;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:9px 16px;min-height:44px;font-weight:600;color:var(--ink)}
-.chp.on{border-color:var(--brand);background:var(--brand-soft);color:var(--brand)}
+.chp.on{border-color:var(--brand);background:var(--brand-soft);color:var(--brand-text)}
 .search{width:100%;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:14px;padding:12px 16px;font:inherit;min-height:48px;margin:8px 0 6px}
 .toolrow{display:flex;align-items:center;justify-content:space-between;margin:6px 0}
-.link{background:none;border:0;color:var(--brand);font-weight:700;padding:8px 4px;min-height:40px}
+.link{background:none;border:0;color:var(--brand-text);font-weight:700;padding:8px 4px;min-height:40px}
 .gh{font:700 12.5px/1 var(--ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
 
 /* ---------- test cards ---------- */
 .tcard{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 10px 14px 14px;margin-bottom:10px;box-shadow:var(--sh-sm);cursor:pointer}
 .tcard:hover{border-color:var(--brand)}
-.tic{flex:none;width:44px;height:44px;border-radius:12px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;font-weight:800;font-size:15px}
+.tic{flex:none;width:44px;height:44px;border-radius:12px;background:var(--brand-soft);color:var(--brand-text);display:grid;place-items:center;font-weight:800;font-size:15px}
 .cbx{flex:none;width:26px;height:26px;border-radius:8px;border:2px solid var(--line);display:grid;place-items:center;color:#fff}
 .cbx.on{background:var(--brand);border-color:var(--brand)}
 .tbody{flex:1;min-width:0}
@@ -239,7 +239,7 @@ details.rv>summary::-webkit-details-marker{display:none}
 .pbar{flex:1;height:6px;background:var(--soft);border-radius:3px;overflow:hidden}
 .pbar i{display:block;height:100%;background:var(--brand);border-radius:3px}
 .bm{flex:none;color:var(--muted)}
-.bm.on{color:var(--brand)}
+.bm.on{color:var(--brand-text)}
 .chev{flex:none;color:var(--muted)}
 .pickbar{position:fixed;left:0;right:0;bottom:calc(66px + env(safe-area-inset-bottom));z-index:25;padding:0 12px}
 .pickbar .in{max-width:736px;margin:0 auto;background:var(--ink);color:var(--bg);border-radius:14px;padding:10px 12px 10px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px;box-shadow:var(--shadow)}
@@ -252,7 +252,7 @@ details.rv>summary::-webkit-details-marker{display:none}
 .cont .pbar{background:rgba(255,255,255,.3)}
 .cont .pbar i{background:#fff}
 .cont .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px}
-.cont .btn{background:#fff;color:#1546A8;border-color:#fff}
+.cont .btn{background:#fff;color:var(--brand-text);border-color:#fff}
 .stat3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
 .stat3 div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 14px;box-shadow:var(--sh-sm)}
 .stat3 b{display:block;font:800 24px/1.2 var(--ui)}
@@ -261,14 +261,14 @@ details.rv>summary::-webkit-details-marker{display:none}
 @media(min-width:560px){.qa{grid-template-columns:repeat(3,1fr)}}
 .qa button{display:flex;align-items:center;gap:12px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--sh-sm);min-height:62px;font-weight:700}
 .qa button[disabled]{opacity:.45}
-.qa i{flex:none;width:38px;height:38px;border-radius:11px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center}
+.qa i{flex:none;width:38px;height:38px;border-radius:11px;background:var(--brand-soft);color:var(--brand-text);display:grid;place-items:center}
 .qa small{display:block;font-weight:500;color:var(--muted);font-size:12.5px}
 
 /* ---------- attempt cards ---------- */
 .acard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:var(--sh-sm)}
 .acard .top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
 .acard .tt{flex:1}
-.badge{flex:none;font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--brand-soft);color:var(--brand)}
+.badge{flex:none;font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--brand-soft);color:var(--brand-text)}
 .badge.inc{background:var(--warn-bg);color:var(--warn)}
 .acard .when{font-size:13px;color:var(--muted);margin-top:2px}
 .acard .big{font:800 22px/1.2 var(--ui);margin:10px 0 2px}
@@ -297,7 +297,7 @@ details.rv>summary::-webkit-details-marker{display:none}
 .btn.big{min-height:54px;font-size:17px;border-radius:14px}
 .empty{padding:36px 10px;text-align:center;color:var(--muted)}
 .empty b{display:block;color:var(--ink);font-size:17px;margin:10px 0 4px}
-.empty i{display:inline-grid;place-items:center;width:64px;height:64px;border-radius:20px;background:var(--brand-soft);color:var(--brand)}
+.empty i{display:inline-grid;place-items:center;width:64px;height:64px;border-radius:20px;background:var(--brand-soft);color:var(--brand-text)}
 
 /* ---------- profile ---------- */
 .avatar{width:64px;height:64px;border-radius:50%;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font:800 26px var(--ui)}
@@ -308,11 +308,105 @@ details.rv>summary::-webkit-details-marker{display:none}
 .lrow small{display:block;color:var(--muted)}
 .btn.danger{color:var(--bad);border-color:var(--bad)}
 
+/* ---------- MedXI additions ---------- */
+:root[data-accent=blue]{--brand:#1976D2}
+:root[data-accent=peach]{--brand:#FF5722}
+:root[data-accent=pink]{--brand:#E91E63}
+:root[data-accent=mint]{--brand:#00804A}
+.icon{color:var(--ink)}
+.brand{display:flex;align-items:center;gap:12px}
+.brand h1{font:800 24px/1.1 var(--ui);letter-spacing:-.02em}
+.brand p{margin:0!important}
+.welcome{font:800 22px/1.25 var(--ui);margin-top:14px}
+.quote{margin:14px 0;border:1.5px solid color-mix(in srgb,var(--brand) 35%,var(--line));background:var(--brand-soft);border-radius:20px;padding:14px 16px 18px}
+.qh{display:flex;align-items:center;justify-content:space-between;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--brand-text)}
+.qh .icon{width:38px;height:38px;color:var(--brand-text)}
+.qbody{transition:opacity .22s ease;padding-top:2px}
+.qbody.out{opacity:0}
+.qt{font:italic 500 19px/1.55 Georgia,"Times New Roman",serif}
+.qa{margin-top:10px;font-weight:700;font-size:14px;color:var(--brand-text)}
+.short{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+@media(min-width:700px){.short{grid-template-columns:repeat(4,1fr)}}
+.short button{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--sh-sm);min-height:112px;display:flex;flex-direction:column;gap:2px;transition:transform .15s,border-color .15s}
+.short button:hover{border-color:var(--brand);transform:translateY(-2px)}
+.short i{width:38px;height:38px;border-radius:11px;background:var(--brand-soft);color:var(--brand-text);display:grid;place-items:center;margin-bottom:8px}
+.short b{font-size:15px}.short small{color:var(--muted);font-size:12.5px}
+.qa2{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:560px){.qa2{grid-template-columns:repeat(3,1fr)}}
+.qa2 button{display:flex;align-items:center;gap:12px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--sh-sm);min-height:62px;font-weight:700}
+.qa2 button[disabled]{opacity:.45}
+.qa2 i{flex:none;width:38px;height:38px;border-radius:11px;background:var(--brand-soft);color:var(--brand-text);display:grid;place-items:center}
+.qa2 small{display:block;font-weight:500;color:var(--muted);font-size:12.5px}
+.ct{font:700 17px/1.3 var(--ui)}
+.swatches{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:640px){.swatches{grid-template-columns:repeat(4,1fr)}}
+.sw{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:14px 8px;min-height:104px;transition:border-color .15s,transform .15s}
+.sw:hover{transform:translateY(-1px)}
+.sw .dot{width:38px;height:38px;border-radius:50%;background:var(--c);display:grid;place-items:center;color:#fff;margin-bottom:6px}
+.sw b{font-size:15px}.sw small{color:var(--muted);font-size:12.5px}
+.sw.on{border-color:var(--c);background:color-mix(in srgb,var(--c) 9%,var(--surface))}
+.switch{flex:none;width:52px;height:30px;border-radius:15px;border:0;background:var(--line);position:relative;transition:background .2s}
+.switch i{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .2s}
+.switch.on{background:var(--brand)}.switch.on i{transform:translateX(22px)}
+.card.list{padding:4px 14px}
+.lbtn{display:flex;align-items:center;gap:12px;width:100%;background:none;border:0;border-bottom:1px solid var(--line);padding:12px 0;min-height:60px;text-align:left;color:var(--ink)}
+.lbtn:last-child{border-bottom:0}
+.lbtn svg:last-child{color:var(--muted);flex:none}
+.lic{flex:none;width:38px;height:38px;border-radius:11px;background:var(--brand-soft);color:var(--brand-text);display:grid;place-items:center}
+.ltx{flex:1;min-width:0;font-weight:600}
+.ltx small{display:block;font-weight:500;color:var(--muted);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stay{margin:22px 0 0;background:color-mix(in srgb,var(--brand) 80%,#000);color:#fff;border-radius:20px;padding:20px}
+.stay h3{font:800 22px/1.2 var(--ui)}
+.stay p{margin:6px 0 12px;opacity:.95}
+.sstats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.sstats span{background:rgba(255,255,255,.16);border-radius:99px;padding:5px 12px;font-size:13.5px}
+.stay .btn{background:#fff;border-color:#fff;color:color-mix(in srgb,var(--brand) 70%,#000)}
+.danger-zone{margin-top:22px;border:1.5px solid var(--bad);border-radius:16px;padding:16px;background:color-mix(in srgb,var(--bad) 6%,var(--surface))}
+.danger-zone h3{color:var(--bad);font-size:16px}
+.danger-zone p{margin:6px 0 12px;color:var(--ink);font-size:14.5px}
+.inp{width:100%;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:11px 14px;font:inherit;min-height:46px}
+textarea.inp{resize:vertical;min-height:140px}
+.tgrid{display:grid;grid-template-columns:1fr;column-gap:12px}
+@media(min-width:900px){.tgrid{grid-template-columns:1fr 1fr}}
+.rc{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border:1.5px solid var(--line);border-radius:10px;margin-bottom:6px;font-size:15px}
+.rc b{flex:none;width:24px;height:24px;border-radius:6px;background:var(--soft);display:grid;place-items:center;font-size:13px}
+.rc.ok{border-color:var(--ok);background:var(--ok-bg)}.rc.ok b{background:var(--ok);color:#fff}
+.rc.bad{border-color:var(--bad);background:var(--bad-bg)}.rc.bad b{background:var(--bad);color:#fff}
+.sol{font:400 16.5px/1.65 var(--ui)}
+.sol .sh{margin:18px 0 6px;padding-top:10px;border-top:1px solid var(--line)}
+.sol .sh:first-child{border-top:0;padding-top:0}
+.anim{animation:pg .24s ease-out}
+@keyframes pg{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.ov2{z-index:70;align-items:center}
+.spop{position:relative;overflow:hidden;background:var(--surface);border-radius:24px;max-width:340px;width:calc(100% - 40px);padding:28px 22px 20px;text-align:center;box-shadow:var(--shadow);border-top:6px solid var(--brand);animation:pop .3s cubic-bezier(.2,1.3,.4,1)}
+.spop h3{font:800 24px/1.2 var(--ui);color:var(--brand-text);margin:8px 0}
+.spop p{color:var(--muted);margin-bottom:12px}
+.sico{font-size:54px;line-height:1}
+.scount{display:inline-block;background:var(--brand-soft);color:var(--brand-text);font-weight:800;border-radius:99px;padding:4px 14px;margin-bottom:16px;font-size:14px}
+.spop .btn{width:100%}
+.conf{position:absolute;inset:0;pointer-events:none}
+.conf span{position:absolute;top:-12px;width:8px;height:12px;border-radius:2px;animation:fall 1.6s ease-in forwards}
+@keyframes fall{to{transform:translateY(340px) rotate(540deg);opacity:0}}
+@keyframes pop{from{transform:scale(.85);opacity:0}to{transform:none;opacity:1}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.conf{display:none}}
+/* desktop: navigation becomes a slim left rail */
+@media(min-width:900px){
+  #app.hasnav{padding-left:92px}
+  .wrap{max-width:1000px}
+  .bnav{top:0;right:auto;width:92px;border-top:0;border-right:1px solid var(--line);padding:16px 6px;justify-content:flex-start;box-shadow:none}
+  .bnav .in{flex-direction:column;gap:6px;max-width:none}
+  .bnav button{flex:none;min-height:66px}
+  .pickbar{left:92px;bottom:16px}
+  .pad{padding-bottom:40px}
+}
+
 </style>
+<script>(function(){try{var p=JSON.parse(localStorage.getItem("medxi.prefs")||"null"),l=JSON.parse(localStorage.getItem("qb1")||"null"),r=document.documentElement;r.dataset.theme=(p&&p.mode)||(l&&l.theme)||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");r.dataset.accent=(p&&p.accent)||"mint";}catch(e){}})();</script>
 </head>
 <body>
 <div id="app"></div>
 <div id="layer"></div>
+<div id="layer2"></div>
 <script src="qb-index.js"></script>
 <script>
 "use strict";
@@ -325,7 +419,7 @@ const LS = {
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } }
 };
 let DB = LS.get("qb1", { st: {}, bm: {}, theme: null, hist: [] });
-DB.st = DB.st || {}; DB.bm = DB.bm || {}; DB.saved = DB.saved || {}; DB.name = DB.name || "";
+DB.st = DB.st || {}; DB.videos = DB.videos || []; DB.bm = DB.bm || {}; DB.saved = DB.saved || {}; DB.name = DB.name || "";
 let ATT = LS.get("qb2.att", []);          // completed attempts (one record per attempt)
 let SESSIONS = LS.get("qb2.sess", {});    // unfinished attempts by id
 let SESS = null;                          // active session
@@ -347,7 +441,7 @@ const CH = Object.fromEntries(IDX.map(c => [c.id, c]));
 const GROUPS = [...new Set(IDX.map(c => c.group))];
 const LETTERS = "ABCDEFGH";
 const keyOf = (ch, n) => ch + ":" + n;
-const state = { view: "main", nav: "home", q: "", group: "All", selMode: false, sel: new Set(), tab: "all", palOpen: false };
+const state = { nq: "", anim: false, view: "main", nav: "home", q: "", group: "All", selMode: false, sel: new Set(), tab: "all", palOpen: false };
 let timerId = null, setupCfg = null, cfmFn = null, histOK = false;
 
 /* ===================== icons ===================== */
@@ -363,7 +457,14 @@ const IC = {
   review: '<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
   play: '<path d="M7 4l13 8-13 8z"/>', moon: '<path d="M20 14A8 8 0 1 1 10 4a6 6 0 0 0 10 10z"/>',
   shuffle: '<path d="M3 7h4l10 10h4M3 17h4l3-3M14 10l3-3h4"/>', alert: '<circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/>',
-  list: '<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>', stop: '<rect x="6" y="6" width="12" height="12" rx="2"/>'
+  list: '<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+  video: '<rect x="3" y="5" width="13" height="14" rx="2"/><path d="M16 10l5-3v10l-5-3z"/>',
+  doc: '<path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4M10 12h6M10 16h6"/>',
+  quiz: '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 11l2 2 4-4M9 17h6"/>',
+  plus: '<path d="M12 5v14M5 12h14"/>', trash: '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',
+  send: '<path d="M21 3L3 11l6 2 2 6 3-4 5 3z"/>', help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>', refresh: '<path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/>', stop: '<rect x="6" y="6" width="12" height="12" rx="2"/>'
 };
 const ico = (n, sz = 22, fill = false) => `<svg width="${sz}" height="${sz}" viewBox="0 0 24 24" fill="${fill ? "currentColor" : "none"}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]}</svg>`;
 
@@ -389,8 +490,7 @@ const sameIds = (a, b) => sameSet([...a].sort(), [...b].sort());
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const imgTag = id => { const u = QB.pics[id] || ("img/" + id + ".jpg"); return `<img class="fig" src="${u}" alt="Figure" data-zoom="${u}">`; };
 const MODE = { tutor: "Tutor", exam: "Exam", review: "Review" };
-function applyTheme() { const t = DB.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"); document.documentElement.dataset.theme = t; }
-applyTheme();
+
 
 function chStats(id) {
   const n = CH[id].n; let att = 0, cor = 0;
@@ -419,9 +519,9 @@ function toMain(nav) {
   if (histOK && history.state && history.state.q) history.back(); else leave();
 }
 window.addEventListener("popstate", () => { if (state.view !== "main") leave(); });
-function go(nav) { state.nav = nav; state.sel.clear(); state.selMode = false; render(); window.scrollTo(0, 0); }
+function go(nav) { state.anim = true; state.nav = nav; state.sel.clear(); state.selMode = false; render(); window.scrollTo(0, 0); }
 function render() {
-  clearInterval(timerId);
+  clearInterval(timerId); $("#app").className = state.view === "main" ? "hasnav" : "";
   if (state.view === "main") renderMain();
   else if (state.view === "setup") renderSetup();
   else if (state.view === "quiz") renderQuiz();
@@ -481,45 +581,25 @@ const emptyBox = (icon, title, text) => `<div class="empty"><i>${ico(icon, 30)}<
 
 /* ===================== main screens ===================== */
 function bnav() {
-  const cur = state.nav === "cont" ? "prev" : state.nav;
-  const items = [["home", "Home", "home"], ["qbank", "QBank", "grid"], ["saved", "Saved", "bookmark"], ["prev", "Previous", "history"], ["profile", "Profile", "user"]];
-  return `<nav class="bnav" aria-label="Main"><div class="in">${items.map(([k, l, i]) => `<button class="${cur === k ? "on" : ""}" data-act="nav" data-nav="${k}" ${cur === k ? 'aria-current="page"' : ""}><i>${ico(i, 22, cur === k && k === "bookmark")}</i>${l}</button>`).join("")}</div></nav>`;
+  const cur = ["saved", "prev", "cont"].includes(state.nav) ? "qbank" : state.nav;
+  const items = [["home", "Home", "home"], ["videos", "Videos", "video"], ["notes", "Notes", "doc"], ["qbank", "QBank", "quiz"], ["profile", "Profile", "user"]];
+  return `<nav class="bnav" aria-label="Main"><div class="in">${items.map(([k, l, i]) => `<button class="${cur === k ? "on" : ""}" data-act="nav" data-nav="${k}" ${cur === k ? 'aria-current="page"' : ""}><i>${ico(i, 22)}</i>${l}</button>`).join("")}</div></nav>`;
 }
 function renderMain() {
-  let body;
-  if (state.nav === "home") body = homeHTML(); else if (state.nav === "profile") body = profileHTML(); else body = testsHTML();
-  const pick = state.nav === "qbank" && state.selMode && state.sel.size ? (() => { const nq = [...state.sel].reduce((a, id) => a + CH[id].n, 0);
+  $("#app").className = "hasnav";
+  const n = state.nav; let body;
+  if (n === "home") body = homeHTML(); else if (n === "profile") body = profileHTML(); else if (n === "videos") body = videosHTML(); else if (n === "notes") body = notesHTML(); else body = testsHTML();
+  const pick = n === "qbank" && state.selMode && state.sel.size ? (() => { const nq = [...state.sel].reduce((a, id) => a + CH[id].n, 0);
     return `<div class="pickbar"><div class="in"><span><b>${state.sel.size}</b> chapters, ${nq} questions</span><button class="btn primary" data-act="setup-sel">Next</button></div></div>`; })() : "";
-  $("#app").innerHTML = `<div class="wrap pad">${body}</div>${pick}${bnav()}`;
+  $("#app").innerHTML = `<div class="wrap pad ${state.anim ? "anim" : ""}">${body}</div>${pick}${bnav()}`;
+  state.anim = false;
   const on = $(".ptab.on"); if (on) on.parentElement.scrollLeft = on.offsetLeft - 16;
-}
-function homeHTML() {
-  const total = IDX.reduce((a, c) => a + c.n, 0);
-  const t = IDX.reduce((a, c) => { const s = chStats(c.id); a.att += s.att; a.cor += s.cor; return a; }, { att: 0, cor: 0 });
-  const allIds = IDX.map(c => c.id), wrong = countFilter(allIds).wrong, bm = Object.values(DB.bm).filter(Boolean).length;
-  const u = unfinished()[0], saved = Object.keys(DB.saved).map(Number).filter(id => CH[id]).sort((a, b) => DB.saved[b] - DB.saved[a]);
-  let h = `<div class="hdr"><div><h1>${DB.name ? "Hi, " + esc(DB.name) : "Medicine Qbank"}</h1><p>${total.toLocaleString()} questions in ${IDX.length} chapters</p></div>
-    <button class="icon" data-act="theme" aria-label="Switch light or dark theme">${ico("moon", 22)}</button></div>`;
-  if (u) { const N = u.list.length, done = Object.keys(u.ans).length;
-    h += `<div class="cont"><small>Continue where you left off</small><b>${esc(u.title)}</b>
-      <div class="pr"><span class="pbar"><i style="width:${Math.round(100 * (u.i + 1) / N)}%"></i></span></div>
-      <div class="row"><small>${MODE[u.mode]} mode, question ${u.i + 1} of ${N}, ${done} answered</small><button class="btn" data-act="cont" data-id="${u.id}">Continue</button></div></div>`; }
-  h += `<div class="stat3"><div><b>${t.att}</b><span>attempted</span></div><div><b>${t.att ? Math.round(100 * t.cor / t.att) + "%" : "–"}</b><span>accuracy</span></div><div><b>${ATT.length}</b><span>tests completed</span></div></div>
-    <h2 class="sec">Practice</h2><div class="qa">
-    <button data-act="quick" data-f="all"><i>${ico("shuffle")}</i><span>Mixed test<small>All chapters</small></span></button>
-    <button data-act="quick" data-f="wrong" ${wrong ? "" : "disabled"}><i>${ico("alert")}</i><span>My mistakes<small>${wrong} questions</small></span></button>
-    <button data-act="quick" data-f="bm" ${bm ? "" : "disabled"}><i>${ico("bookmark")}</i><span>Bookmarked<small>${bm} questions</small></span></button></div>`;
-  if (saved.length) h += `<div class="toolrow"><h2 class="sec" style="margin:22px 0 10px">Saved tests</h2><button class="link" data-act="nav" data-nav="saved">See all</button></div>` + saved.slice(0, 3).map(id => testCard(CH[id])).join("");
-  const rec = prevItems().slice(0, 2);
-  if (rec.length) h += `<div class="toolrow"><h2 class="sec" style="margin:22px 0 10px">Recent activity</h2><button class="link" data-act="nav" data-nav="prev">See all</button></div>` + rec.map(x => x.h).join("");
-  if (!u && !saved.length && !rec.length) h += `<div class="toolrow"><h2 class="sec">Start here</h2><button class="link" data-act="nav" data-nav="qbank">Browse all tests</button></div>` + IDX.slice(0, 3).map(testCard).join("");
-  return h;
 }
 function testsHTML() {
   const nav = state.nav, tabs = [["qbank", "All Tests"], ["saved", "Saved Tests"], ["prev", "Previous Tests"], ["cont", "Continue Test"]];
   const titles = { qbank: "QBank", saved: "Saved Tests", prev: "Previous Tests", cont: "Continue Test" };
   const subs = { qbank: `${IDX.length} chapters to practise`, saved: "Tests you bookmarked for later", prev: "Every attempt is kept, newest first", cont: "Unfinished tests, ready to resume" };
-  let h = `<div class="hdr"><div><h1>${titles[nav]}</h1><p>${subs[nav]}</p></div></div>
+  let h = hdr(titles[nav], subs[nav]) + `
     <div class="ptabs" role="tablist">${tabs.map(([k, l]) => `<button class="ptab ${nav === k ? "on" : ""}" role="tab" aria-selected="${nav === k}" data-act="nav" data-nav="${k}">${l}</button>`).join("")}</div>`;
   if (nav === "qbank") {
     const q = state.q.trim().toLowerCase();
@@ -528,11 +608,11 @@ function testsHTML() {
       <div class="chips">${["All"].concat(GROUPS).map(g => `<button class="chp ${state.group === g ? "on" : ""}" data-act="grp" data-g="${esc(g)}">${esc(g)}</button>`).join("")}</div>
       <div class="toolrow"><span class="sub">${list.length} test${list.length === 1 ? "" : "s"}</span><button class="link" data-act="selmode">${state.selMode ? "Cancel selection" : "Select several"}</button></div>`;
     if (!list.length) h += emptyBox("grid", "No tests found", "Try a different search or subject.");
-    else if (state.group === "All" && !q) GROUPS.forEach(g => { const items = list.filter(c => c.group === g); if (items.length) h += `<div class="gh">${esc(g)}</div>` + items.map(testCard).join(""); });
-    else h += list.map(testCard).join("");
+    else if (state.group === "All" && !q) GROUPS.forEach(g => { const items = list.filter(c => c.group === g); if (items.length) h += `<div class="gh">${esc(g)}</div><div class="tgrid">` + items.map(testCard).join("") + `</div>`; });
+    else h += `<div class="tgrid">` + list.map(testCard).join("") + `</div>`;
   } else if (nav === "saved") {
     const ids = Object.keys(DB.saved).map(Number).filter(id => CH[id]).sort((a, b) => DB.saved[b] - DB.saved[a]);
-    h += ids.length ? ids.map(id => testCard(CH[id])).join("") : emptyBox("bookmark", "No saved tests yet", "Tap the bookmark icon on any test to keep it here for later.");
+    h += ids.length ? `<div class="tgrid">` + ids.map(id => testCard(CH[id])).join("") + `</div>` : emptyBox("bookmark", "No saved tests yet", "Tap the bookmark icon on any test to keep it here for later.");
   } else if (nav === "prev") {
     const items = prevItems();
     h += items.length ? items.map(x => x.h).join("") : emptyBox("history", "No attempts yet", "Tests you start or finish will appear here, newest first.");
@@ -542,20 +622,6 @@ function testsHTML() {
   }
   return h;
 }
-function profileHTML() {
-  const t = IDX.reduce((a, c) => { const s = chStats(c.id); a.att += s.att; a.cor += s.cor; return a; }, { att: 0, cor: 0 });
-  const dark = document.documentElement.dataset.theme === "dark";
-  return `<div class="hdr"><div><h1>Profile</h1><p>Stored on this device and browser</p></div></div>
-    <div class="prof"><div class="avatar">${esc((DB.name || "S").trim().charAt(0).toUpperCase() || "S")}</div><input id="pname" type="text" placeholder="Your name" value="${esc(DB.name)}" maxlength="30" aria-label="Your name"></div>
-    <div class="stat3"><div><b>${t.att}</b><span>attempted</span></div><div><b>${t.att ? Math.round(100 * t.cor / t.att) + "%" : "–"}</b><span>accuracy</span></div><div><b>${Object.keys(DB.saved).length}</b><span>saved tests</span></div></div>
-    <h2 class="sec">Appearance</h2><div class="chips"><button class="chp ${dark ? "" : "on"}" data-act="settheme" data-v="light">Light</button><button class="chp ${dark ? "on" : ""}" data-act="settheme" data-v="dark">Dark</button></div>
-    <h2 class="sec">Your data</h2><div class="card">
-      <div class="lrow"><div>Back up my progress<small>Saved tests, attempts, bookmarks</small></div><button class="btn" data-act="export">Export</button></div>
-      <div class="lrow"><div>Restore from backup<small>Merges a backup file into this device</small></div><button class="btn" data-act="import">Import</button></div>
-      <div class="lrow"><div>Reset everything<small>Deletes all progress on this device</small></div><button class="btn danger" data-act="reset">Reset</button></div></div>
-    <input type="file" id="impfile" accept="application/json,.json" hidden>
-    <p class="sub" style="margin-top:16px">Progress is saved in this browser only. Clearing site data or switching browser removes it, so export a backup now and then.</p>`;
-}
 function askConfirm(title, text, okLabel, fn) {
   cfmFn = fn;
   $("#layer").innerHTML = `<div class="ov" data-act="closeov"><div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(title)}">
@@ -564,6 +630,203 @@ function askConfirm(title, text, okLabel, fn) {
     <div class="sh-foot"><button class="btn" data-act="closeov">Cancel</button><button class="btn primary" data-act="cfm-ok">${esc(okLabel)}</button></div></div></div>`;
 }
 function closeLayer() { $("#layer").innerHTML = ""; }
+/* ===================== MedXI: theme, mode, quotes ===================== */
+const ACCENTS = [
+  { id: "blue", label: "Default", name: "Blue", hex: "#1976D2" },
+  { id: "peach", label: "Peach", name: "Orange", hex: "#FF5722" },
+  { id: "pink", label: "Pink", name: "Pink", hex: "#E91E63" },
+  { id: "mint", label: "Mint", name: "Green", hex: "#00804A" }
+];
+let PREF = LS.get("medxi.prefs", null) || { accent: "mint", mode: DB.theme || null };
+if (!ACCENTS.some(a => a.id === PREF.accent)) PREF.accent = "mint";
+function applyTheme() {
+  const mode = PREF.mode || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  const r = document.documentElement; r.dataset.theme = mode; r.dataset.accent = PREF.accent;
+  const m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = (ACCENTS.find(a => a.id === PREF.accent) || ACCENTS[3]).hex;
+}
+const savePref = () => LS.set("medxi.prefs", PREF);
+const isDark = () => document.documentElement.dataset.theme === "dark";
+function setMode(m) { PREF.mode = m; savePref(); applyTheme(); if (state.view === "main") rerender(); }
+function toggleMode() { setMode(isDark() ? "light" : "dark"); }
+function setAccent(id) { PREF.accent = id; savePref(); applyTheme(); if (state.view === "main") rerender(); }
+applyTheme();
+DB.videos = DB.videos || []; DB.notes = DB.notes || []; DB.links = DB.links || {};
+
+const QUOTES = [
+  ["Medicine is a science of uncertainty and an art of probability.", "Sir William Osler"],
+  ["The good physician treats the disease; the great physician treats the patient who has the disease.", "Sir William Osler"],
+  ["Wherever the art of Medicine is loved, there is also a love of Humanity.", "Hippocrates", 1],
+  ["The secret of the care of the patient is in caring for the patient.", "Francis W. Peabody"],
+  ["Life is short, the art long, opportunity fleeting, experience treacherous, judgment difficult.", "Hippocrates"],
+  ["First, do no harm.", "Hippocratic tradition", 1],
+  ["He who studies medicine without books sails an uncharted sea, but he who studies medicine without patients does not go to sea at all.", "Sir William Osler"],
+  ["Observe, record, tabulate, communicate.", "Sir William Osler"],
+  ["The practice of medicine is an art, not a trade; a calling, not a business.", "Sir William Osler"],
+  ["Care more particularly for the individual patient than for the special features of the disease.", "Sir William Osler"],
+  ["Healing is a matter of time, but it is sometimes also a matter of opportunity.", "Hippocrates"],
+  ["A physician is obligated to consider more than a diseased organ, more even than the whole man. He must view the man in his world.", "Harvey Cushing", 1],
+  ["Medicine is a social science, and politics is nothing else but medicine on a large scale.", "Rudolf Virchow", 1],
+  ["The art of medicine consists of amusing the patient while nature cures the disease.", "Voltaire", 1],
+  ["The aim of medicine is to prevent disease and prolong life.", "William J. Mayo", 1],
+  ["Medicine is the only profession that labors incessantly to destroy the reason for its own existence.", "James Bryce", 1],
+  ["Medicine is not only a science; it is also an art.", "Paracelsus", 1],
+  ["In nothing do men more nearly approach the gods than in giving health to men.", "Cicero"],
+  ["Natural forces within us are the true healers of disease.", "Hippocrates", 1],
+  ["In the field of observation, chance favours only the prepared mind.", "Louis Pasteur"],
+  ["The important thing is not to stop questioning.", "Albert Einstein"],
+  ["Genius is one percent inspiration and ninety-nine percent perspiration.", "Thomas Edison"],
+  ["Education is the most powerful weapon which you can use to change the world.", "Nelson Mandela"],
+  ["It always seems impossible until it's done.", "Nelson Mandela", 1],
+  ["The only way to do great work is to love what you do.", "Steve Jobs"],
+  ["An investment in knowledge pays the best interest.", "Benjamin Franklin", 1],
+  ["It does not matter how slowly you go as long as you do not stop.", "Confucius", 1],
+  ["Success is the sum of small efforts, repeated day in and day out.", "Robert Collier", 1],
+  ["Learning never exhausts the mind.", "Leonardo da Vinci", 1],
+  ["Perseverance is not a long race; it is many short races one after the other.", "Walter Elliot", 1],
+  ["The beautiful thing about learning is that no one can take it away from you.", "B. B. King"],
+  ["Discipline is the bridge between goals and accomplishment.", "Jim Rohn", 1],
+  ["Nothing in life is to be feared, it is only to be understood.", "Marie Curie", 1],
+  ["The expert in anything was once a beginner.", "Helen Hayes", 1]
+];
+let QS = LS.get("medxi.quote", null);
+const dayKey = () => { const d = new Date(); return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate(); };
+const dayNum = () => { const d = new Date(); return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 864e5); };
+function quoteIdx() {   // one quote per day, kept in storage so it stays the same all day
+  if (!QS || QS.d !== dayKey() || !QUOTES[QS.i]) { QS = { d: dayKey(), i: dayNum() % QUOTES.length }; LS.set("medxi.quote", QS); }
+  return QS.i;
+}
+const quoteInner = i => { const q = QUOTES[i]; return `<p class="qt">“${esc(q[0])}”</p><p class="qa">${q[2] ? "Attributed to " : ""}${esc(q[1])}</p>`; };
+function refreshQuote() {
+  let i; do { i = Math.floor(Math.random() * QUOTES.length); } while (i === QS.i);
+  QS = { d: dayKey(), i }; LS.set("medxi.quote", QS);
+  const box = $("#quotetext"); if (!box) return;
+  box.classList.add("out");
+  setTimeout(() => { box.innerHTML = quoteInner(i); box.classList.remove("out"); }, 220);
+}
+
+/* ===================== MedXI: header, home, profile ===================== */
+const LOGO = `<svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="var(--brand)"/><path d="M17 8h6v9h9v6h-9v9h-6v-9H8v-6h9z" fill="#fff"/></svg>`;
+const modeBtn = () => `<button class="icon" data-act="togglemode" aria-label="Switch to ${isDark() ? "light" : "dark"} mode">${ico(isDark() ? "sun" : "moon", 22)}</button>`;
+const hdr = (t, p) => `<div class="hdr"><div><h1>${t}</h1><p>${p}</p></div>${modeBtn()}</div>`;
+function weakest() {
+  let w = null;
+  IDX.forEach(c => { const s = chStats(c.id); if (s.att >= 5) { const a = s.cor / s.att; if (!w || a < w.a) w = { c, a }; } });
+  return w;
+}
+function homeHTML() {
+  const total = IDX.reduce((a, c) => a + c.n, 0);
+  const t = IDX.reduce((a, c) => { const s = chStats(c.id); a.att += s.att; a.cor += s.cor; return a; }, { att: 0, cor: 0 });
+  const allIds = IDX.map(c => c.id), wrong = countFilter(allIds).wrong, bm = Object.values(DB.bm).filter(Boolean).length;
+  const un = unfinished(), u = un[0], nSaved = Object.keys(DB.saved).filter(id => CH[id]).length;
+  let h = `<div class="hdr"><div class="brand">${LOGO}<div><h1>MedXI</h1><p>Medical exam practice</p></div></div>${modeBtn()}</div>
+    <h2 class="welcome">${DB.name ? "Welcome back, " + esc(DB.name) : "Welcome back"}</h2>
+    <p class="sub">${total.toLocaleString()} questions in ${IDX.length} chapters</p>
+    <div class="quote" aria-label="Medical quote of the day"><div class="qh"><span>Quote of the day</span><button class="icon" data-act="quote" aria-label="Show another quote">${ico("refresh", 18)}</button></div>
+      <div id="quotetext" class="qbody">${quoteInner(quoteIdx())}</div></div>
+    <div class="short">
+      <button data-act="nav" data-nav="cont"><i>${ico("play")}</i><b>Continue Test</b><small>${un.length ? un.length + " unfinished" : "Nothing unfinished"}</small></button>
+      <button data-act="nav" data-nav="saved"><i>${ico("bookmark")}</i><b>Saved Tests</b><small>${nSaved} saved</small></button>
+      <button data-act="nav" data-nav="prev"><i>${ico("history")}</i><b>Previous Tests</b><small>${ATT.length} completed</small></button>
+      <button data-act="nav" data-nav="qbank"><i>${ico("quiz")}</i><b>QBank</b><small>${IDX.length} chapters</small></button></div>`;
+  if (u) { const N = u.list.length, done = Object.keys(u.ans).length;
+    h += `<div class="cont"><small>Continue where you left off</small><b>${esc(u.title)}</b>
+      <div class="pr"><span class="pbar"><i style="width:${Math.round(100 * (u.i + 1) / N)}%"></i></span></div>
+      <div class="row"><small>${MODE[u.mode]} mode, question ${u.i + 1} of ${N}, ${done} answered</small><button class="btn" data-act="cont" data-id="${u.id}">Continue</button></div></div>`; }
+  h += `<div class="stat3"><div><b>${t.att}</b><span>attempted</span></div><div><b>${t.att ? Math.round(100 * t.cor / t.att) + "%" : "–"}</b><span>accuracy</span></div><div><b>${ATT.length}</b><span>tests completed</span></div></div>
+    <h2 class="sec">Practice</h2><div class="qa2">
+    <button data-act="quick" data-f="all"><i>${ico("shuffle")}</i><span>Mixed test<small>All chapters</small></span></button>
+    <button data-act="quick" data-f="wrong" ${wrong ? "" : "disabled"}><i>${ico("alert")}</i><span>My mistakes<small>${wrong} questions</small></span></button>
+    <button data-act="quick" data-f="bm" ${bm ? "" : "disabled"}><i>${ico("bookmark")}</i><span>Bookmarked<small>${bm} questions</small></span></button></div>`;
+  const rec = prevItems().slice(0, 2);
+  if (rec.length) h += `<div class="toolrow"><h2 class="sec" style="margin:22px 0 10px">Recent activity</h2><button class="link" data-act="nav" data-nav="prev">See all</button></div><div class="tgrid">` + rec.map(x => x.h).join("") + `</div>`;
+  return h;
+}
+const linkOf = k => (window.MEDXI_LINKS && window.MEDXI_LINKS[k]) || DB.links[k] || "";
+function profileHTML() {
+  const t = IDX.reduce((a, c) => { const s = chStats(c.id); a.att += s.att; a.cor += s.cor; return a; }, { att: 0, cor: 0 });
+  const w = weakest(), dark = isDark();
+  const rows = [["telegram", "Official Telegram Channel", "send"], ["help", "Help Center", "help"], ["contact", "Support / Contact", "mail"]];
+  return hdr("Profile", "Settings and preferences") + `
+    <h2 class="sec">Preferences</h2>
+    <div class="card"><h3 class="ct">Theme Color</h3><p class="sub" style="margin-bottom:12px">Select your app accent color</p>
+      <div class="swatches" role="radiogroup" aria-label="Theme color">${ACCENTS.map(a => { const on = PREF.accent === a.id;
+        return `<button class="sw ${on ? "on" : ""}" role="radio" aria-checked="${on}" data-act="accent" data-v="${a.id}" style="--c:${a.hex}"><span class="dot">${on ? ico("check", 16) : ""}</span><b>${a.label}</b><small>${a.name}</small></button>`; }).join("")}</div>
+      <div class="lrow" style="margin-top:12px"><div>Dark mode<small>${dark ? "On" : "Off"}, works with any accent color</small></div>
+        <button class="switch ${dark ? "on" : ""}" role="switch" aria-checked="${dark}" data-act="togglemode" aria-label="Dark mode"><i></i></button></div></div>
+    <h2 class="sec">Community &amp; Support</h2>
+    <div class="card list">${rows.map(([k, l, i]) => `<button class="lbtn" data-act="${linkOf(k) ? "openlink" : "setlink"}" data-k="${k}"><span class="lic">${ico(i, 20)}</span><span class="ltx">${l}<small>${linkOf(k) ? esc(linkOf(k).replace(/^https?:\/\//, "")) : "Tap to add the link"}</small></span>${ico("chev", 18)}</button>`).join("")}</div>
+    <h2 class="sec">Account</h2>
+    <div class="card"><div class="prof" style="margin:0 0 10px"><div class="avatar">${esc((DB.name || "S").trim().charAt(0).toUpperCase() || "S")}</div><input id="pname" type="text" placeholder="Your name" value="${esc(DB.name)}" maxlength="30" aria-label="Your name"></div>
+      <p class="sub">This site has no sign-in, so there is no log out. Your name, progress and settings stay on this device.</p></div>
+    <div class="stay"><h3>Stay Sharp!</h3><p>Keep practicing to maintain your progress and improve your weakest areas.</p>
+      ${t.att ? `<div class="sstats"><span><b>${t.att}</b> attempted</span><span><b>${Math.round(100 * t.cor / t.att)}%</b> accuracy</span>${w ? `<span>Weakest so far: <b>${esc(w.c.title)}</b> (${Math.round(100 * w.a)}%)</span>` : ""}</div>` : ""}
+      <button class="btn" data-act="nav" data-nav="qbank">Open QBank</button></div>
+    <h2 class="sec">Your data</h2><div class="card">
+      <div class="lrow"><div>Back up my data<small>Saved tests, attempts, bookmarks, videos, notes</small></div><button class="btn" data-act="export">Export</button></div>
+      <div class="lrow"><div>Restore from backup<small>Merges a backup file into this device</small></div><button class="btn" data-act="import">Import</button></div></div>
+    <input type="file" id="impfile" accept="application/json,.json" hidden>
+    <div class="danger-zone"><h3>Danger zone</h3><p>Reset All Progress deletes your answers, bookmarks, saved tests, unfinished tests and all previous attempts on this device. Your videos, notes, name and theme are kept. It can't be undone.</p>
+      <button class="btn danger" data-act="reset">Reset all progress</button></div>
+    <p class="foot">MedXI keeps everything in this browser. Clearing site data removes it, so export a backup now and then.</p>`;
+}
+
+/* ===================== MedXI: videos & notes (your own, stored on this device) ===================== */
+function videosHTML() {
+  const v = DB.videos.slice().sort((a, b) => b.t - a.t);
+  return hdr("Videos", "Lecture links you add yourself") + `<div class="toolrow"><span class="sub">${v.length} video${v.length === 1 ? "" : "s"}</span><button class="btn primary" data-act="addvideo">${ico("plus", 18)} Add video</button></div>` +
+    (v.length ? v.map(x => { let host = ""; try { host = new URL(x.url).hostname.replace(/^www\./, ""); } catch (e) {}
+      return `<div class="acard"><div class="top"><div class="tt">${esc(x.title)}</div></div><div class="when">${esc(host)}</div>
+        <div class="acts"><a class="btn primary" href="${esc(x.url)}" target="_blank" rel="noopener noreferrer" style="text-align:center;text-decoration:none">Watch</a><button class="btn danger" data-act="delvideo" data-id="${x.id}" aria-label="Delete video">${ico("trash", 18)}</button></div></div>`; }).join("")
+    : emptyBox("video", "No videos yet", "Paste a link to any lecture or playlist and it will be kept here. Nothing is uploaded; links are stored on this device."));
+}
+function notesHTML() {
+  const q = state.nq.trim().toLowerCase();
+  const n = DB.notes.slice().sort((a, b) => b.t - a.t).filter(x => !q || x.title.toLowerCase().includes(q) || x.body.toLowerCase().includes(q));
+  return hdr("Notes", "Your own study notes") + `<div class="toolrow"><input class="search" id="nsearch" type="search" placeholder="Search notes" value="${esc(state.nq)}" style="margin:0 8px 0 0;flex:1"><button class="btn primary" data-act="addnote">${ico("plus", 18)} New</button></div>` +
+    (n.length ? `<div class="tgrid">` + n.map(x => `<div class="tcard" role="button" tabindex="0" data-act="editnote" data-id="${x.id}"><span class="tic">${ico("doc", 20)}</span><div class="tbody"><div class="tt">${esc(x.title || "Untitled note")}</div><div class="ts">${esc(x.body.replace(/\s+/g, " ").slice(0, 90))}</div><div class="tmeta"><span>${fmtDate(x.t)}</span></div></div><span class="chev">${ico("chev", 20)}</span></div>`).join("") + `</div>`
+    : emptyBox("doc", DB.notes.length ? "No matching notes" : "No notes yet", DB.notes.length ? "Try a different search." : "Write down mnemonics, doubts and key points. Notes are stored on this device."));
+}
+function sheet(title, body, foot) {
+  $("#layer").innerHTML = `<div class="ov" data-act="closeov"><div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(title)}">
+    <div class="sh-head"><h3>${esc(title)}</h3><button class="icon" data-act="closeov" aria-label="Close">✕</button></div><div class="sh-body">${body}</div><div class="sh-foot">${foot}</div></div></div>`;
+}
+function openVideoForm() {
+  sheet("Add a video", `<div class="fld"><label for="vt">Title</label><input class="inp" id="vt" maxlength="120" placeholder="e.g. Valvular heart disease, part 1"></div><div class="fld"><label for="vu">Link</label><input class="inp" id="vu" inputmode="url" placeholder="https://"></div>`,
+    `<button class="btn" data-act="closeov">Cancel</button><button class="btn primary" data-act="savevideo">Save video</button>`);
+  setTimeout(() => { const e = $("#vt"); e && e.focus(); }, 60);
+}
+function openNoteForm(id) {
+  const n = id ? DB.notes.find(x => x.id === +id) : null;
+  sheet(n ? "Edit note" : "New note", `<div class="fld"><label for="nt">Title</label><input class="inp" id="nt" maxlength="120" value="${n ? esc(n.title) : ""}" placeholder="Title"></div><div class="fld"><label for="nb">Note</label><textarea class="inp" id="nb" rows="9" placeholder="Write here…">${n ? esc(n.body) : ""}</textarea></div>`,
+    `${n ? `<button class="btn danger" data-act="delnote" data-id="${n.id}">Delete</button>` : ""}<button class="btn" data-act="closeov">Cancel</button><button class="btn primary" data-act="savenote" data-id="${n ? n.id : ""}">Save</button>`);
+}
+function openLinkForm(k) {
+  const names = { telegram: "Official Telegram Channel", help: "Help Center", contact: "Support / Contact" };
+  sheet(names[k], `<p class="sub" style="margin-bottom:10px">Paste the link for this item (a web address, or mailto: for email). It is stored on this device.</p><div class="fld"><input class="inp" id="lk" inputmode="url" value="${esc(DB.links[k] || "")}" placeholder="https://t.me/yourchannel"></div>`,
+    `<button class="btn" data-act="closeov">Cancel</button><button class="btn primary" data-act="savelink" data-k="${k}">Save link</button>`);
+}
+
+/* ===================== MedXI: streak popup ===================== */
+const MILE = {
+  3: ["🎉", "3 in a Row!", "Excellent work! You've answered 3 questions correctly in a row. Keep going!"],
+  6: ["🔥", "6 Question Streak!", "Outstanding consistency! You've answered 6 MCQs correctly in a row."],
+  9: ["🏆", "9 in a Row!", "Brilliant performance! You're building a strong streak. Keep it up!"]
+};
+const mileInfo = n => MILE[n] || ["🚀", n + " in a Row!", `Incredible focus! You've answered ${n} questions correctly in a row.`];
+function streakTrack(key, ok) {   // Tutor and Review only. Each question counts once per attempt.
+  const s = SESS; if (!s || s.mode === "exam") return;
+  s.counted = s.counted || {}; if (s.counted[key]) return; s.counted[key] = 1;
+  if (ok) { s.streak = (s.streak || 0) + 1; s.best = Math.max(s.best || 0, s.streak); if (s.streak % 3 === 0) setTimeout(() => showStreak(s.streak), 450); }
+  else s.streak = 0;
+}
+function showStreak(n) {
+  const [ic, t, m] = mileInfo(n), cols = ["var(--brand)", "var(--ok)", "#E0A100", "var(--brand-text)"];
+  const conf = Array.from({ length: 16 }, (_, i) => `<span style="left:${(i * 37) % 100}%;background:${cols[i % 4]};animation-delay:${(i % 6) * 0.08}s"></span>`).join("");
+  $("#layer2").innerHTML = `<div class="ov ov2" data-act="close2"><div class="spop" role="dialog" aria-modal="true" aria-label="${esc(t)}"><div class="conf" aria-hidden="true">${conf}</div>
+    <div class="sico">${ic}</div><h3>${esc(t)}</h3><p>${esc(m)}</p><div class="scount">Current streak: ${n}</div><button class="btn primary big" data-act="close2">Continue</button></div></div>`;
+  const b = $("#layer2 .btn"); if (b) b.focus();
+}
+
 
 /* ===================== SETUP SCREEN ===================== */
 function openSetup(ids, preFilter) {
@@ -602,7 +865,7 @@ function renderSetup() {
 
 /* ===================== SESSIONS ===================== */
 function newSession(o) {
-  SESS = { id: Date.now(), mode: o.mode, title: o.title, list: o.list, ans: {}, checked: {}, marked: {}, qrem: {}, i: 0, qt: o.qt || 0, limit: 0,
+  SESS = { id: Date.now(), mode: o.mode, title: o.title, list: o.list, ans: {}, checked: {}, marked: {}, qrem: {}, streak: 0, best: 0, counted: {}, i: 0, qt: o.qt || 0, limit: 0,
     spent: 0, t0: Date.now(), scheme: o.scheme, finished: false, res: null, cfg: o.cfg, started: Date.now(), upd: Date.now() };
   saveSess(); return SESS;
 }
@@ -723,7 +986,7 @@ function renderQuiz() {
 function tick() {
   if (!SESS || SESS.finished || state.view !== "quiz") return;
   const t = $("#timer"); if (t) t.textContent = fmtTime(spentNow());
-  const s = SESS; if (!s.qt || s.mode === "review" || $("#layer .sheet")) return;
+  const s = SESS; if (!s.qt || s.mode === "review" || $("#layer .sheet") || $("#layer2 .spop")) return;
   const { key } = curQ();
   if (s.mode === "tutor" && s.checked[key]) return;
   let r = s.qrem[key] === undefined ? s.qt : s.qrem[key];
@@ -736,7 +999,7 @@ function onExpire() {
   const s = SESS, { q, key } = curQ();
   if (s.mode === "tutor") {
     if (s.checked[key]) return;
-    s.checked[key] = true; const a = s.ans[key]; if (a && a.length) record(key, isOK(q, a));
+    s.checked[key] = true; const a = s.ans[key]; if (a && a.length) { const o = isOK(q, a); record(key, o); streakTrack(key, o); }
     saveSess(); renderQuiz(); toast("Time is up. Here is the answer."); openSolution();
   } else { toast("Time is up for this question."); if (s.i < s.list.length - 1) s.i++; saveSess(); renderQuiz(); }
 }
@@ -754,7 +1017,7 @@ function selectOpt(i) {
 function checkAnswer() {
   const { q, key } = curQ(), s = SESS;
   if (!(s.ans[key] || []).length) return;
-  s.checked[key] = true; record(key, isOK(q, s.ans[key])); saveSess(); renderQuiz(); openSolution();
+  const okA = isOK(q, s.ans[key]); s.checked[key] = true; record(key, okA); streakTrack(key, okA); saveSess(); renderQuiz(); openSolution();
 }
 function revealAnswer() { const { key } = curQ(); SESS.checked[key] = true; saveSess(); renderQuiz(); openSolution(); }
 
@@ -773,10 +1036,12 @@ function blocksHTML(bl) {
 function openSolution() {
   const { q, key } = curQ(), s = SESS, sel = s.ans[key] || [], N = s.list.length, ok = isOK(q, sel), last = s.i === N - 1;
   const none = !sel.length;
+  const recap = q.o.map((o, i) => `<div class="rc ${q.a.includes(i) ? "ok" : sel.includes(i) ? "bad" : ""}"><b>${LETTERS[i]}</b><span>${esc(o.t) || "(image option)"}</span></div>`).join("");
   $("#layer").innerHTML = `<div class="ov" data-act="closeov"><div class="sheet wide" role="dialog" aria-modal="true" aria-label="Explanation">
    <div class="sh-head"><div><h3>Explanation</h3><small>Question ${s.i + 1} of ${N}</small></div><button class="icon" data-act="closeov" aria-label="Close">✕</button></div>
    <div class="sh-body">
     <div class="verdict ${none ? "" : ok ? "ok" : "bad"}" ${none ? 'style="background:var(--soft)"' : ""}><span class="big">${none ? "i" : ok ? "✓" : "✗"}</span><div>${none ? "Answer revealed" : ok ? "Correct" : "Incorrect"}<small>${none || !ok ? "Correct answer: " + q.a.map(i => LETTERS[i]).join(", ") + (none ? "" : " (you chose " + sel.map(i => LETTERS[i]).join(", ") + ")") : "Your answer: " + sel.map(i => LETTERS[i]).join(", ")}</small></div></div>
+    <div class="recap">${recap}</div>
     <div class="sol">${q.s.length ? blocksHTML(q.s) : "<p>No explanation was included for this question.</p>"}</div>
    </div>
    <div class="sh-foot"><button class="btn" data-act="closeov">Close</button>
@@ -805,11 +1070,15 @@ function finishSession() {
   let cor = 0, wr = 0, na = 0;
   s.list.forEach(([c, n]) => { const a = s.ans[keyOf(c, n)]; if (!a || !a.length) na++; else if (isOK(getQ(c, n), a)) cor++; else wr++; });
   const sc = cor * s.scheme.c + wr * s.scheme.w;
-  s.res = { cor, wr, na, score: Math.round(sc * 100) / 100, max: s.list.length * s.scheme.c, time: Math.round(s.spent) };
+  let run = 0, bestS = 0;
+  if (s.mode === "exam") s.list.forEach(([c, n]) => { const a = s.ans[keyOf(c, n)]; if (!a || !a.length) return; if (isOK(getQ(c, n), a)) { run++; bestS = Math.max(bestS, run); } else run = 0; });
+  else bestS = s.best || 0;
+  s.res = { cor, wr, na, score: Math.round(sc * 100) / 100, max: s.list.length * s.scheme.c, time: Math.round(s.spent), best: bestS };
   delete SESSIONS[s.id]; LS.set("qb2.sess", SESSIONS);
   ATT = ATT.filter(a => a.id !== s.id); ATT.unshift(s); saveAtt();
   RES = s; SESS = null; clearInterval(timerId); closeLayer(); state.tab = "all"; setView("result"); renderResult(); window.scrollTo(0, 0);
   toast("Attempt saved under Previous Tests");
+  if (s.mode === "exam" && bestS >= 3) setTimeout(() => showStreak(Math.floor(bestS / 3) * 3), 600);
 }
 function reviewItem(idx) {
   const s = RES, [c, n] = s.list[idx], q = getQ(c, n), k = keyOf(c, n), a = s.ans[k] || [];
@@ -830,7 +1099,7 @@ function renderResult() {
   if (exam && marked) tabs.push(["mk", "Marked", marked]);
   $("#app").innerHTML = `<div class="appbar"><button class="icon" data-act="back" aria-label="Back">${ico("back")}</button><div class="ab-t"><b>${exam ? "Exam result" : s.mode === "review" ? "Review summary" : "Session summary"}</b></div></div>
   <div class="wrap pad"><p class="sub" style="margin-top:14px">${esc(s.title)}, ${N} questions, ${fmtDate(s.ts)}</p>
-  <div class="score"><div class="big-score">${exam ? `<b>${r.score}</b><span>out of ${r.max} marks</span>` : `<b>${acc}%</b><span>accuracy on answered questions</span>`}</div>
+  <div class="score"><div class="big-score">${exam ? `<b>${r.score}</b><span>out of ${r.max} marks</span>` : `<b>${acc}%</b><span>accuracy on answered questions</span>`}${r.best ? `<span>Longest streak: ${r.best} in a row</span>` : ""}</div>
    <div class="tiles"><div class="tile ok"><b>${r.cor}</b><span>correct</span></div><div class="tile bad"><b>${r.wr}</b><span>incorrect</span></div><div class="tile"><b>${r.na}</b><span>not answered</span></div><div class="tile"><b>${fmtTime(r.time)}</b><span>time taken</span></div></div></div>
   <div class="acts"><button class="btn primary" data-act="retake" data-id="${s.id}">Retake test</button>
    <button class="btn" data-act="retry" ${r.wr + r.na ? "" : "disabled"}>Retry incorrect and skipped (${r.wr + r.na})</button>
@@ -858,8 +1127,28 @@ document.addEventListener("click", async e => {
   switch (act) {
     case "nav": go(el.dataset.nav); break;
     case "nav-prev": toMain("prev"); break;
-    case "theme": DB.theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark"; saveDB(); applyTheme(); break;
-    case "settheme": DB.theme = el.dataset.v; saveDB(); applyTheme(); rerender(); break;
+    case "theme": case "togglemode": toggleMode(); break;
+    case "settheme": setMode(el.dataset.v); break;
+    case "accent": setAccent(el.dataset.v); break;
+    case "quote": refreshQuote(); break;
+    case "close2": if (el.classList.contains("ov") && e.target !== el) break; $("#layer2").innerHTML = ""; break;
+    case "addvideo": openVideoForm(); break;
+    case "savevideo": { const t = $("#vt").value.trim(), u = $("#vu").value.trim();
+      let ok = false; try { const x = new URL(u); ok = /^https?:$/.test(x.protocol); } catch (er) {}
+      if (!t) { toast("Add a title first."); break; } if (!ok) { toast("Enter a full link starting with https://"); break; }
+      DB.videos.push({ id: Date.now(), title: t, url: u, t: Date.now() }); saveDB(); closeLayer(); toast("Video added"); rerender(); break; }
+    case "delvideo": askConfirm("Delete this video link?", "Only the saved link is removed from this device.", "Delete", () => { DB.videos = DB.videos.filter(v => v.id !== +id); saveDB(); toast("Video removed"); rerender(); }); break;
+    case "addnote": openNoteForm(); break;
+    case "editnote": openNoteForm(id); break;
+    case "savenote": { const t = $("#nt").value.trim(), b = $("#nb").value.trim(); if (!t && !b) { toast("Write something first."); break; }
+      const ex = id ? DB.notes.find(x => x.id === +id) : null;
+      if (ex) { ex.title = t; ex.body = b; ex.t = Date.now(); } else DB.notes.push({ id: Date.now(), title: t, body: b, t: Date.now() });
+      saveDB(); closeLayer(); toast("Note saved"); rerender(); break; }
+    case "delnote": askConfirm("Delete this note?", "This note will be removed from this device. It can't be undone.", "Delete note", () => { DB.notes = DB.notes.filter(x => x.id !== +id); saveDB(); toast("Note deleted"); rerender(); }); break;
+    case "setlink": openLinkForm(el.dataset.k); break;
+    case "savelink": { const v = $("#lk").value.trim(); let ok = !v; try { if (v) { const x = new URL(v); ok = /^(https?|mailto):$/.test(x.protocol); } } catch (er) {}
+      if (!ok) { toast("Enter a full link, e.g. https://t.me/yourchannel"); break; } if (v) DB.links[el.dataset.k] = v; else delete DB.links[el.dataset.k]; saveDB(); closeLayer(); toast("Link saved"); rerender(); break; }
+    case "openlink": window.open(linkOf(el.dataset.k), "_blank", "noopener,noreferrer"); break;
     case "save": e.stopPropagation(); toggleSave(+el.dataset.ch); break;
     case "open": openSetup([+el.dataset.ch]); break;
     case "pickch": { const c = +el.dataset.ch; state.sel.has(c) ? state.sel.delete(c) : state.sel.add(c); rerender(); break; }
@@ -901,12 +1190,13 @@ document.addEventListener("click", async e => {
       document.body.appendChild(a); a.click(); a.remove(); toast("Backup downloaded"); break; }
     case "import": $("#impfile").click(); break;
     case "reset": askConfirm("Reset everything?", "This deletes saved tests, attempts, answers and bookmarks on this device. It can't be undone. Export a backup first if unsure.", "Delete everything", () => {
-      DB = { st: {}, bm: {}, saved: {}, theme: DB.theme, name: "", hist: [] }; ATT = []; SESSIONS = {}; saveDB(); LS.set("qb2.att", ATT); LS.set("qb2.sess", SESSIONS); toast("All progress deleted"); go("home"); }); break;
+      DB = { st: {}, bm: {}, saved: {}, name: DB.name, videos: DB.videos, notes: DB.notes, links: DB.links, hist: [] }; ATT = []; SESSIONS = {}; saveDB(); LS.set("qb2.att", ATT); LS.set("qb2.sess", SESSIONS); toast("All progress deleted"); go("home"); }); break;
   }
 });
 document.addEventListener("keydown", e => {
   if (e.key === "Enter" && e.target.classList && e.target.classList.contains("tcard")) { e.target.click(); return; }
   if (e.target.matches("input,select,textarea")) return;
+  if ($("#layer2 .spop") && (e.key === "Escape" || e.key === "Enter")) { $("#layer2").innerHTML = ""; return; }
   if (e.key === "Escape") { closeLayer(); const lb = $(".lightbox"); if (lb) lb.remove(); return; }
   if (state.view !== "quiz" || !SESS) return;
   const open = $("#layer .sheet");
@@ -925,7 +1215,7 @@ document.addEventListener("change", e => {
     const f = t.files[0]; if (!f) return;
     f.text().then(txt => {
       const d = JSON.parse(txt); if (!d || !d.db) throw new Error("bad file");
-      Object.assign(DB.st, d.db.st || {}); Object.assign(DB.bm, d.db.bm || {}); Object.assign(DB.saved, d.db.saved || {}); if (!DB.name && d.db.name) DB.name = d.db.name;
+      (d.db.videos || []).forEach(v => { if (!DB.videos.some(x => x.id === v.id)) DB.videos.push(v); }); (d.db.notes || []).forEach(v => { if (!DB.notes.some(x => x.id === v.id)) DB.notes.push(v); }); Object.assign(DB.st, d.db.st || {}); Object.assign(DB.bm, d.db.bm || {}); Object.assign(DB.saved, d.db.saved || {}); if (!DB.name && d.db.name) DB.name = d.db.name;
       (d.att || []).forEach(a => { if (!ATT.some(x => x.id === a.id)) ATT.push(a); }); ATT.sort((a, b) => b.ts - a.ts);
       Object.assign(SESSIONS, d.sessions || {}); saveDB(); saveAtt(); LS.set("qb2.sess", SESSIONS); toast("Backup restored"); rerender();
     }).catch(() => toast("That file isn't a valid backup.")); t.value = ""; return;
@@ -938,6 +1228,7 @@ document.addEventListener("change", e => {
   }
 });
 document.addEventListener("input", e => {
+  if (e.target.id === "nsearch") { state.nq = e.target.value; const pos = e.target.selectionStart; renderMain(); const n = $("#nsearch"); n.focus(); n.setSelectionRange(pos, pos); return; }
   if (e.target.id === "search") { state.q = e.target.value; const pos = e.target.selectionStart; renderMain(); const n = $("#search"); n.focus(); n.setSelectionRange(pos, pos); }
 });
 window.addEventListener("pagehide", pauseTimer);
