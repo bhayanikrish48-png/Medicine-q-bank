@@ -145,7 +145,7 @@ select{width:100%;border:1px solid var(--line);background:var(--surface);color:v
 .verdict.bad{background:var(--bad-bg);color:var(--bad)}
 .verdict small{display:block;font-weight:500;color:var(--ink);opacity:.85}
 .verdict .big{font-size:26px;line-height:1}
-.sol{font:400 16.5px/1.6 var(--read)}
+.sol{font:400 16.5px/1.6 var(--read)}\n#inline-solution{scroll-margin-top:90px}
 .sol .fig{max-height:300px}
 .sh{font:700 16px/1.4 var(--ui);margin:16px 0 6px}
 .sh.cor{color:var(--ok)}
@@ -817,15 +817,25 @@ const mileInfo = n => MILE[n] || ["🚀", n + " in a Row!", `Incredible focus! Y
 function streakTrack(key, ok) {   // Tutor and Review only. Each question counts once per attempt.
   const s = SESS; if (!s || s.mode === "exam") return;
   s.counted = s.counted || {}; if (s.counted[key]) return; s.counted[key] = 1;
-  if (ok) { s.streak = (s.streak || 0) + 1; s.best = Math.max(s.best || 0, s.streak); if (s.streak % 3 === 0) setTimeout(() => showStreak(s.streak), 450); }
-  else s.streak = 0;
+  if (ok) { s.streak = (s.streak || 0) + 1; s.best = Math.max(s.best || 0, s.streak); if (s.streak >= 3) setTimeout(() => streakNotice(s.streak), 120); }
+  else { s.streak = 0; clearStreakNotice(); }
 }
-function showStreak(n) {
-  const [ic, t, m] = mileInfo(n), cols = ["var(--brand)", "var(--ok)", "#E0A100", "var(--brand-text)"];
-  const conf = Array.from({ length: 16 }, (_, i) => `<span style="left:${(i * 37) % 100}%;background:${cols[i % 4]};animation-delay:${(i % 6) * 0.08}s"></span>`).join("");
-  $("#layer2").innerHTML = `<div class="ov ov2" data-act="close2"><div class="spop" role="dialog" aria-modal="true" aria-label="${esc(t)}"><div class="conf" aria-hidden="true">${conf}</div>
-    <div class="sico">${ic}</div><h3>${esc(t)}</h3><p>${esc(m)}</p><div class="scount">Current streak: ${n}</div><button class="btn primary big" data-act="close2">Continue</button></div></div>`;
-  const b = $("#layer2 .btn"); if (b) b.focus();
+function clearStreakNotice() {
+  const old = document.getElementById("streak-notice");
+  if (old) old.remove();
+}
+function streakNotice(n) {
+  if (!SESS || !SESS.streak || SESS.streak < 3 || SESS.streak !== n || state.view !== "quiz") return;
+  let t = document.getElementById("streak-notice");
+  if (!t) {
+    t = document.createElement("div");
+    t.id = "streak-notice";
+    t.setAttribute("role", "status");
+    t.setAttribute("aria-live", "polite");
+    t.style.cssText = "position:fixed;top:calc(env(safe-area-inset-top) + 12px);left:50%;transform:translateX(-50%);z-index:45;background:var(--surface);color:var(--ink);border:1px solid var(--brand);box-shadow:var(--sh-sm);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:700;white-space:nowrap;pointer-events:none";
+    document.body.appendChild(t);
+  }
+  t.textContent = `🔥 ${n} correct in a row`;
 }
 
 
@@ -1020,9 +1030,10 @@ function selectOpt(i) {
 function checkAnswer() {
   const { q, key } = curQ(), s = SESS;
   if (!(s.ans[key] || []).length) return;
-  const okA = isOK(q, s.ans[key]); s.checked[key] = true; record(key, okA); streakTrack(key, okA); saveSess(); renderQuiz();
+  const okA = isOK(q, s.ans[key]); s.checked[key] = true; record(key, okA); streakTrack(key, okA); saveSess(); renderQuiz(); scrollToSolution();
 }
-function revealAnswer() { const { key } = curQ(); SESS.checked[key] = true; saveSess(); renderQuiz(); }
+function revealAnswer() { const { key } = curQ(); SESS.checked[key] = true; saveSess(); renderQuiz(); scrollToSolution(); }
+function scrollToSolution() { requestAnimationFrame(() => { const el = document.getElementById("inline-solution"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); }
 
 /* ===================== SOLUTION POPUP ===================== */
 function blocksHTML(bl) {
@@ -1081,7 +1092,7 @@ function finishSession() {
   ATT = ATT.filter(a => a.id !== s.id); ATT.unshift(s); saveAtt();
   RES = s; SESS = null; clearInterval(timerId); closeLayer(); state.tab = "all"; setView("result"); renderResult(); window.scrollTo(0, 0);
   toast("Attempt saved under Previous Tests");
-  if (s.mode === "exam" && bestS >= 3) setTimeout(() => showStreak(Math.floor(bestS / 3) * 3), 600);
+  
 }
 function reviewItem(idx) {
   const s = RES, [c, n] = s.list[idx], q = getQ(c, n), k = keyOf(c, n), a = s.ans[k] || [];
