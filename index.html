@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#00804A">
-<title>Step the Ladder 🪜</title>
+<title>step the ladder 🪜</title>
 <style>
 :root{
   --bg:#F7F8F9; --surface:#FFFFFF; --ink:#111B2E; --muted:#5E6A83; --line:#E2E7F5; --soft:#EEF1FB;
@@ -115,13 +115,13 @@ select{width:100%;border:1px solid var(--line);background:var(--surface);color:v
 .pn.ans{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
 .pn.ok{background:var(--ok);border-color:var(--ok);color:#fff}
 .pn.bad{background:var(--bad);border-color:var(--bad);color:#fff}
-.pn.cur{outline:3px solid var(--brand);outline-offset:2px;box-shadow:0 0 0 4px var(--brand-soft)}
+.pn.cur{outline:3px solid var(--ink);outline-offset:1px}
 .pn.mk::after{content:"";position:absolute;top:-4px;right:-4px;width:12px;height:12px;border-radius:50%;background:#E0A100;border:2px solid var(--surface)}
 .legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;font-size:12.5px;color:var(--muted)}
 .legend span{display:flex;align-items:center;gap:6px}
 .legend i{width:12px;height:12px;border-radius:3px;border:1.5px solid var(--line);display:inline-block}
-.strip{display:flex;gap:8px;overflow-x:auto;padding:10px 12px;border-top:1px solid var(--line);scrollbar-width:thin;scroll-snap-type:x proximity;background:var(--surface)}
-.strip .pn{flex:none;width:42px;height:42px;border-radius:12px;scroll-snap-align:start}
+.strip{display:flex;gap:6px;overflow-x:auto;padding:8px 10px;border-top:1px solid var(--line);scrollbar-width:thin}
+.strip .pn{flex:none;width:38px;height:38px}
 @media(min-width:980px){.strip{display:none}}
 .tools{display:flex;gap:6px}
 .qtool{border:1px solid var(--line);background:transparent;border-radius:8px;padding:6px 10px;min-height:38px;font-size:14px;font-weight:600;color:var(--muted)}
@@ -145,7 +145,7 @@ select{width:100%;border:1px solid var(--line);background:var(--surface);color:v
 .verdict.bad{background:var(--bad-bg);color:var(--bad)}
 .verdict small{display:block;font-weight:500;color:var(--ink);opacity:.85}
 .verdict .big{font-size:26px;line-height:1}
-.sol{font:400 16.5px/1.6 var(--read)}
+.sol{font:400 16.5px/1.6 var(--read)}\n#inline-solution{scroll-margin-top:90px}
 .sol .fig{max-height:300px}
 .sh{font:700 16px/1.4 var(--ui);margin:16px 0 6px}
 .sh.cor{color:var(--ok)}
@@ -401,38 +401,6 @@ textarea.inp{resize:vertical;min-height:140px}
   .pad{padding-bottom:40px}
 }
 
-
-/* Step the Ladder — refined, responsive UI layer */
-:root{--bg:#f5faf7;--surface:#fff;--ink:#14231d;--muted:#667a70;--line:#dcebe3;--soft:#edf7f1;--sh-sm:0 4px 18px rgba(20,55,38,.055);--shadow:0 18px 50px rgba(16,40,28,.18)}
-:root[data-theme=dark]{--bg:#0b1511;--surface:#111f18;--ink:#edf8f1;--muted:#9bb3a5;--line:#263d31;--soft:#182b21}
-body{letter-spacing:-.01em;background:var(--bg)}
-.wrap{max-width:820px;padding-left:18px;padding-right:18px}
-.appbar{padding-left:16px;padding-right:16px;min-height:68px;backdrop-filter:blur(16px);background:color-mix(in srgb,var(--surface) 92%,transparent)}
-.brand{gap:10px}.brand h1{letter-spacing:-.045em;font-size:25px}.ladder-logo{width:44px;height:44px;border-radius:15px;background:var(--brand-soft);font-size:29px}
-h2.sec{font-size:21px;letter-spacing:-.035em;margin:26px 0 12px}
-.card,.acard,.tcard,.cont,.quote,.stay,.mcard,.empty,.stat3>div,.qa2 button,.short button{border-radius:20px;box-shadow:var(--sh-sm)}
-.card,.acard{padding:18px;border-color:var(--line)}
-.btn{border-radius:13px;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;min-height:46px}
-.btn.primary{box-shadow:0 5px 13px color-mix(in srgb,var(--brand) 20%,transparent)}
-.btn:active,.bnav button:active{transform:scale(.98)}
-input,select,textarea,.search{border-radius:13px!important;border-color:var(--line)!important;background:var(--surface);color:var(--ink)}
-.quote{padding:16px 18px;border-width:1px}
-.short{gap:10px}.short button{border-color:var(--line);padding:15px 12px;min-height:116px;transition:transform .16s ease,border-color .16s ease}
-.short button:hover{transform:translateY(-2px)}
-.qa2{gap:12px}.qa2 button{border-color:var(--line);padding:16px;border-radius:18px}
-.tcard{padding:15px;border-color:var(--line);gap:14px}.tic{width:48px;height:48px;border-radius:15px}
-.bnav{padding:8px 8px calc(8px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(18px);box-shadow:0 -8px 28px rgba(15,40,28,.055)}
-.bnav .in{max-width:620px;gap:6px}.bnav button{min-height:58px;font-size:12px;gap:3px;border-radius:16px}.bnav button i{width:58px;height:32px;border-radius:13px;transition:background .18s ease}.bnav button.on{font-weight:800}.bnav button.on i{background:var(--brand-soft)}
-.qbar{backdrop-filter:blur(16px);background:color-mix(in srgb,var(--surface) 94%,transparent);box-shadow:0 4px 16px rgba(15,40,28,.035)}
-.qno{font-size:13px;letter-spacing:.01em}.progress{height:7px;border-radius:99px;overflow:hidden}.progress i{border-radius:99px;transition:width .25s ease}
-.pal{border-radius:20px;border-color:var(--line);box-shadow:var(--sh-sm)}.pn{border-radius:12px;min-height:42px}.pn.cur{outline-width:2px}
-.opt{border-radius:16px!important;border-color:var(--line)!important;padding:15px!important;min-height:60px;transition:border-color .16s ease,background .16s ease,transform .16s ease}.opt:active{transform:scale(.995)}.opt .k{border-radius:11px!important}
-.verdict{border-radius:16px;padding:15px}.solution,.explanation{border-radius:16px}
-.ov{backdrop-filter:blur(5px)}.sheet{border-radius:24px 24px 0 0}
-.badge{padding:5px 11px;letter-spacing:.01em}
-@media(min-width:760px){.wrap{padding-left:24px;padding-right:24px}.brand h1{font-size:28px}.card,.acard{padding:22px}.short{gap:14px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
-
 </style>
 <script>(function(){try{var p=JSON.parse(localStorage.getItem("medxi.prefs")||"null"),l=JSON.parse(localStorage.getItem("qb1")||"null"),r=document.documentElement;r.dataset.theme=(p&&p.mode)||(l&&l.theme)||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");r.dataset.accent=(p&&p.accent)||"mint";}catch(e){}})();</script>
 </head>
@@ -615,7 +583,7 @@ const emptyBox = (icon, title, text) => `<div class="empty"><i>${ico(icon, 30)}<
 /* ===================== main screens ===================== */
 function bnav() {
   const cur = ["saved", "prev", "cont"].includes(state.nav) ? "qbank" : state.nav;
-  const items = [["home", "Home", "home"], ["qbank", "QBank", "quiz"], ["profile", "Profile", "user"]];
+  const items = [["home", "Home", "home"], ["videos", "Videos", "video"], ["notes", "Notes", "doc"], ["qbank", "QBank", "quiz"], ["profile", "Profile", "user"]];
   return `<nav class="bnav" aria-label="Main"><div class="in">${items.map(([k, l, i]) => `<button class="${cur === k ? "on" : ""}" data-act="nav" data-nav="${k}" ${cur === k ? 'aria-current="page"' : ""}><i>${ico(i, 22)}</i>${l}</button>`).join("")}</div></nav>`;
 }
 function renderMain() {
@@ -665,9 +633,10 @@ function askConfirm(title, text, okLabel, fn) {
 function closeLayer() { $("#layer").innerHTML = ""; }
 /* ===================== MedXI: theme, mode, quotes ===================== */
 const ACCENTS = [
-  { id: "mint", label: "Green", name: "Mint", hex: "#00804A" },
+  { id: "blue", label: "Default", name: "Blue", hex: "#1976D2" },
   { id: "peach", label: "Peach", name: "Orange", hex: "#FF5722" },
-  { id: "pink", label: "Pink", name: "Pink", hex: "#E91E63" }
+  { id: "pink", label: "Pink", name: "Pink", hex: "#E91E63" },
+  { id: "mint", label: "Mint", name: "Green", hex: "#00804A" }
 ];
 let PREF = LS.get("medxi.prefs", null) || { accent: "mint", mode: DB.theme || null };
 if (!ACCENTS.some(a => a.id === PREF.accent)) PREF.accent = "mint";
@@ -838,27 +807,20 @@ function openLinkForm(k) {
     `<button class="btn" data-act="closeov">Cancel</button><button class="btn primary" data-act="savelink" data-k="${k}">Save link</button>`);
 }
 
-/* ===================== MedXI: streak popup ===================== */
-const MILE = {
-  3: ["🎉", "3 in a Row!", "Excellent work! You've answered 3 questions correctly in a row. Keep going!"],
-  6: ["🔥", "6 Question Streak!", "Outstanding consistency! You've answered 6 MCQs correctly in a row."],
-  9: ["🏆", "9 in a Row!", "Brilliant performance! You're building a strong streak. Keep it up!"]
-};
-const mileInfo = n => MILE[n] || ["🚀", n + " in a Row!", `Incredible focus! You've answered ${n} questions correctly in a row.`];
-function streakTrack(key, ok) {   // Tutor and Review only. Each question counts once per attempt.
-  const s = SESS; if (!s || s.mode === "exam") return;
-  s.counted = s.counted || {}; if (s.counted[key]) return; s.counted[key] = 1;
-  if (ok) { s.streak = (s.streak || 0) + 1; s.best = Math.max(s.best || 0, s.streak); if (s.streak % 3 === 0) setTimeout(() => showStreak(s.streak), 450); }
-  else s.streak = 0;
+/* ===================== Streak tracking (no popup) ===================== */
+function streakTrack(key, ok) {
+  const s = SESS;
+  if (!s || s.mode === "exam") return;
+  s.counted = s.counted || {};
+  if (s.counted[key]) return;
+  s.counted[key] = 1;
+  if (ok) {
+    s.streak = (s.streak || 0) + 1;
+    s.best = Math.max(s.best || 0, s.streak);
+  } else {
+    s.streak = 0;
+  }
 }
-function showStreak(n) {
-  const [ic, t, m] = mileInfo(n), cols = ["var(--brand)", "var(--ok)", "#E0A100", "var(--brand-text)"];
-  const conf = Array.from({ length: 16 }, (_, i) => `<span style="left:${(i * 37) % 100}%;background:${cols[i % 4]};animation-delay:${(i % 6) * 0.08}s"></span>`).join("");
-  $("#layer2").innerHTML = `<div class="ov ov2" data-act="close2"><div class="spop" role="dialog" aria-modal="true" aria-label="${esc(t)}"><div class="conf" aria-hidden="true">${conf}</div>
-    <div class="sico">${ic}</div><h3>${esc(t)}</h3><p>${esc(m)}</p><div class="scount">Current streak: ${n}</div><button class="btn primary big" data-act="close2">Continue</button></div></div>`;
-  const b = $("#layer2 .btn"); if (b) b.focus();
-}
-
 
 /* ===================== SETUP SCREEN ===================== */
 function openSetup(ids, preFilter) {
@@ -1015,7 +977,12 @@ function renderQuiz() {
   <div class="qfoot"><div class="in">${foot}</div></div>`;
   clearInterval(timerId); timerId = setInterval(tick, 1000);
   const stp = $(".strip"), cp = stp && stp.querySelector(".cur"); if (stp && cp) stp.scrollLeft = cp.offsetLeft - stp.clientWidth / 2 + 19;
-  window.scrollTo(0, 0);
+  if (mode !== "exam" && chk) {
+    // renderQuiz replaces #app; wait for layout, then bring the inline explanation into view.
+    setTimeout(scrollToSolution, 80);
+  } else {
+    window.scrollTo(0, 0);
+  }
 }
 function tick() {
   if (!SESS || SESS.finished || state.view !== "quiz") return;
@@ -1034,7 +1001,7 @@ function onExpire() {
   if (s.mode === "tutor") {
     if (s.checked[key]) return;
     s.checked[key] = true; const a = s.ans[key]; if (a && a.length) { const o = isOK(q, a); record(key, o); streakTrack(key, o); }
-    saveSess(); renderQuiz(); toast("Time is up. Here is the answer.");
+    saveSess(); renderQuiz(); scrollToSolution(); toast("Time is up. Here is the answer.");
   } else { toast("Time is up for this question."); if (s.i < s.list.length - 1) s.i++; saveSess(); renderQuiz(); }
 }
 function record(key, ok) { const o = DB.st[key] || { a: 0 }; DB.st[key] = { c: ok ? 1 : 0, a: (o.a || 0) + 1, t: Date.now() }; saveDB(); }
@@ -1051,9 +1018,23 @@ function selectOpt(i) {
 function checkAnswer() {
   const { q, key } = curQ(), s = SESS;
   if (!(s.ans[key] || []).length) return;
-  const okA = isOK(q, s.ans[key]); s.checked[key] = true; record(key, okA); streakTrack(key, okA); saveSess(); renderQuiz();
+  const okA = isOK(q, s.ans[key]); s.checked[key] = true; record(key, okA); streakTrack(key, okA); saveSess(); renderQuiz(); scrollToSolution();
 }
-function revealAnswer() { const { key } = curQ(); SESS.checked[key] = true; saveSess(); renderQuiz(); }
+function revealAnswer() { const { key } = curQ(); SESS.checked[key] = true; saveSess(); renderQuiz(); scrollToSolution(); }
+function scrollToSolution() {
+  const attempt = (tries = 0) => {
+    const el = document.getElementById("inline-solution");
+    if (!el) {
+      if (tries < 5) setTimeout(() => attempt(tries + 1), 100);
+      return;
+    }
+    // Account for the sticky question header and allow the browser to finish layout first.
+    const y = el.getBoundingClientRect().top + window.scrollY - 76;
+    window.scrollTo({ top: Math.max(0, y), behavior: tries ? "auto" : "smooth" });
+    el.scrollIntoView({ behavior: tries ? "auto" : "smooth", block: "start" });
+  };
+  requestAnimationFrame(() => requestAnimationFrame(() => attempt()));
+}
 
 /* ===================== SOLUTION POPUP ===================== */
 function blocksHTML(bl) {
@@ -1112,7 +1093,7 @@ function finishSession() {
   ATT = ATT.filter(a => a.id !== s.id); ATT.unshift(s); saveAtt();
   RES = s; SESS = null; clearInterval(timerId); closeLayer(); state.tab = "all"; setView("result"); renderResult(); window.scrollTo(0, 0);
   toast("Attempt saved under Previous Tests");
-  if (s.mode === "exam" && bestS >= 3) setTimeout(() => showStreak(Math.floor(bestS / 3) * 3), 600);
+  
 }
 function reviewItem(idx) {
   const s = RES, [c, n] = s.list[idx], q = getQ(c, n), k = keyOf(c, n), a = s.ans[k] || [];
