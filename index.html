@@ -115,13 +115,13 @@ select{width:100%;border:1px solid var(--line);background:var(--surface);color:v
 .pn.ans{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
 .pn.ok{background:var(--ok);border-color:var(--ok);color:#fff}
 .pn.bad{background:var(--bad);border-color:var(--bad);color:#fff}
-.pn.cur{outline:3px solid var(--ink);outline-offset:1px}
+.pn.cur{outline:3px solid var(--brand);outline-offset:2px;box-shadow:0 0 0 4px var(--brand-soft)}
 .pn.mk::after{content:"";position:absolute;top:-4px;right:-4px;width:12px;height:12px;border-radius:50%;background:#E0A100;border:2px solid var(--surface)}
 .legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;font-size:12.5px;color:var(--muted)}
 .legend span{display:flex;align-items:center;gap:6px}
 .legend i{width:12px;height:12px;border-radius:3px;border:1.5px solid var(--line);display:inline-block}
-.strip{display:flex;gap:6px;overflow-x:auto;padding:8px 10px;border-top:1px solid var(--line);scrollbar-width:thin}
-.strip .pn{flex:none;width:38px;height:38px}
+.strip{display:flex;gap:8px;overflow-x:auto;padding:10px 12px;border-top:1px solid var(--line);scrollbar-width:thin;scroll-snap-type:x proximity;background:var(--surface)}
+.strip .pn{flex:none;width:42px;height:42px;border-radius:12px;scroll-snap-align:start}
 @media(min-width:980px){.strip{display:none}}
 .tools{display:flex;gap:6px}
 .qtool{border:1px solid var(--line);background:transparent;border-radius:8px;padding:6px 10px;min-height:38px;font-size:14px;font-weight:600;color:var(--muted)}
@@ -145,7 +145,7 @@ select{width:100%;border:1px solid var(--line);background:var(--surface);color:v
 .verdict.bad{background:var(--bad-bg);color:var(--bad)}
 .verdict small{display:block;font-weight:500;color:var(--ink);opacity:.85}
 .verdict .big{font-size:26px;line-height:1}
-.sol{font:400 16.5px/1.6 var(--read)}\n#inline-solution{scroll-margin-top:90px}
+.sol{font:400 16.5px/1.6 var(--read)}
 .sol .fig{max-height:300px}
 .sh{font:700 16px/1.4 var(--ui);margin:16px 0 6px}
 .sh.cor{color:var(--ok)}
@@ -583,7 +583,7 @@ const emptyBox = (icon, title, text) => `<div class="empty"><i>${ico(icon, 30)}<
 /* ===================== main screens ===================== */
 function bnav() {
   const cur = ["saved", "prev", "cont"].includes(state.nav) ? "qbank" : state.nav;
-  const items = [["home", "Home", "home"], ["videos", "Videos", "video"], ["notes", "Notes", "doc"], ["qbank", "QBank", "quiz"], ["profile", "Profile", "user"]];
+  const items = [["home", "Home", "home"], ["qbank", "QBank", "quiz"], ["profile", "Profile", "user"]];
   return `<nav class="bnav" aria-label="Main"><div class="in">${items.map(([k, l, i]) => `<button class="${cur === k ? "on" : ""}" data-act="nav" data-nav="${k}" ${cur === k ? 'aria-current="page"' : ""}><i>${ico(i, 22)}</i>${l}</button>`).join("")}</div></nav>`;
 }
 function renderMain() {
@@ -633,10 +633,9 @@ function askConfirm(title, text, okLabel, fn) {
 function closeLayer() { $("#layer").innerHTML = ""; }
 /* ===================== MedXI: theme, mode, quotes ===================== */
 const ACCENTS = [
-  { id: "blue", label: "Default", name: "Blue", hex: "#1976D2" },
+  { id: "mint", label: "Green", name: "Mint", hex: "#00804A" },
   { id: "peach", label: "Peach", name: "Orange", hex: "#FF5722" },
-  { id: "pink", label: "Pink", name: "Pink", hex: "#E91E63" },
-  { id: "mint", label: "Mint", name: "Green", hex: "#00804A" }
+  { id: "pink", label: "Pink", name: "Pink", hex: "#E91E63" }
 ];
 let PREF = LS.get("medxi.prefs", null) || { accent: "mint", mode: DB.theme || null };
 if (!ACCENTS.some(a => a.id === PREF.accent)) PREF.accent = "mint";
@@ -817,25 +816,15 @@ const mileInfo = n => MILE[n] || ["🚀", n + " in a Row!", `Incredible focus! Y
 function streakTrack(key, ok) {   // Tutor and Review only. Each question counts once per attempt.
   const s = SESS; if (!s || s.mode === "exam") return;
   s.counted = s.counted || {}; if (s.counted[key]) return; s.counted[key] = 1;
-  if (ok) { s.streak = (s.streak || 0) + 1; s.best = Math.max(s.best || 0, s.streak); if (s.streak >= 3) setTimeout(() => streakNotice(s.streak), 120); }
-  else { s.streak = 0; clearStreakNotice(); }
+  if (ok) { s.streak = (s.streak || 0) + 1; s.best = Math.max(s.best || 0, s.streak); if (s.streak % 3 === 0) setTimeout(() => showStreak(s.streak), 450); }
+  else s.streak = 0;
 }
-function clearStreakNotice() {
-  const old = document.getElementById("streak-notice");
-  if (old) old.remove();
-}
-function streakNotice(n) {
-  if (!SESS || !SESS.streak || SESS.streak < 3 || SESS.streak !== n || state.view !== "quiz") return;
-  let t = document.getElementById("streak-notice");
-  if (!t) {
-    t = document.createElement("div");
-    t.id = "streak-notice";
-    t.setAttribute("role", "status");
-    t.setAttribute("aria-live", "polite");
-    t.style.cssText = "position:fixed;top:calc(env(safe-area-inset-top) + 12px);left:50%;transform:translateX(-50%);z-index:45;background:var(--surface);color:var(--ink);border:1px solid var(--brand);box-shadow:var(--sh-sm);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:700;white-space:nowrap;pointer-events:none";
-    document.body.appendChild(t);
-  }
-  t.textContent = `🔥 ${n} correct in a row`;
+function showStreak(n) {
+  const [ic, t, m] = mileInfo(n), cols = ["var(--brand)", "var(--ok)", "#E0A100", "var(--brand-text)"];
+  const conf = Array.from({ length: 16 }, (_, i) => `<span style="left:${(i * 37) % 100}%;background:${cols[i % 4]};animation-delay:${(i % 6) * 0.08}s"></span>`).join("");
+  $("#layer2").innerHTML = `<div class="ov ov2" data-act="close2"><div class="spop" role="dialog" aria-modal="true" aria-label="${esc(t)}"><div class="conf" aria-hidden="true">${conf}</div>
+    <div class="sico">${ic}</div><h3>${esc(t)}</h3><p>${esc(m)}</p><div class="scount">Current streak: ${n}</div><button class="btn primary big" data-act="close2">Continue</button></div></div>`;
+  const b = $("#layer2 .btn"); if (b) b.focus();
 }
 
 
@@ -1030,10 +1019,9 @@ function selectOpt(i) {
 function checkAnswer() {
   const { q, key } = curQ(), s = SESS;
   if (!(s.ans[key] || []).length) return;
-  const okA = isOK(q, s.ans[key]); s.checked[key] = true; record(key, okA); streakTrack(key, okA); saveSess(); renderQuiz(); scrollToSolution();
+  const okA = isOK(q, s.ans[key]); s.checked[key] = true; record(key, okA); streakTrack(key, okA); saveSess(); renderQuiz();
 }
-function revealAnswer() { const { key } = curQ(); SESS.checked[key] = true; saveSess(); renderQuiz(); scrollToSolution(); }
-function scrollToSolution() { requestAnimationFrame(() => { const el = document.getElementById("inline-solution"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }); }
+function revealAnswer() { const { key } = curQ(); SESS.checked[key] = true; saveSess(); renderQuiz(); }
 
 /* ===================== SOLUTION POPUP ===================== */
 function blocksHTML(bl) {
@@ -1092,7 +1080,7 @@ function finishSession() {
   ATT = ATT.filter(a => a.id !== s.id); ATT.unshift(s); saveAtt();
   RES = s; SESS = null; clearInterval(timerId); closeLayer(); state.tab = "all"; setView("result"); renderResult(); window.scrollTo(0, 0);
   toast("Attempt saved under Previous Tests");
-  
+  if (s.mode === "exam" && bestS >= 3) setTimeout(() => showStreak(Math.floor(bestS / 3) * 3), 600);
 }
 function reviewItem(idx) {
   const s = RES, [c, n] = s.list[idx], q = getQ(c, n), k = keyOf(c, n), a = s.ans[k] || [];
